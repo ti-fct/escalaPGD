@@ -1,0 +1,567 @@
+<html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="language" content="pt-BR">
+    <meta name="description" content="Página web que mostra a escala de trabalho dos técnicos administrativos da FCT">
+    <meta name="keywords" content="Escala, PGD, Técnicos, FCT, UFG">
+
+    <meta property="og:type" content="page">
+    <meta property="og:url" content="https://www.facebook.com/fct.ufg">
+    <meta property="og:title" content="fct.ufg">
+    <meta property="og:image" content="https://files.cercomp.ufg.br/weby/up/1/o/favicon.png">
+    <meta property="og:description" content="Faculdade de Ciência e Tecnologia - UFG">
+
+    <title>Escala PGD - Apoio Técnico</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+    <div class="container mt-5">
+
+        <!-- Main Content -->
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span>Escala de Trabalho</span>
+                <span id="current-date" class="current-date">segunda-feira, 19 de maio de 2025</span>
+            </div>
+            <div class="card-body">
+                <!-- Legend -->
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color bg-presencial"></div>
+                        <span>Presencial</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color bg-remoto"></div>
+                        <span>Remoto</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color bg-atividade-externa"></div>
+                        <span>Atividade Externa</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color bg-afastamento"></div>
+                        <span>Afastamento</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color bg-paralisacao"></div>
+                        <span>Paralisação</span>
+                    </div>
+                </div>
+
+                <!-- Week Tabs -->
+                <ul class="nav nav-tabs week-tabs" id="weekTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="week1-tab" data-bs-toggle="tab" data-bs-target="#week1" type="button" role="tab" aria-controls="week1" aria-selected="false" tabindex="-1">
+                            Semana 1 (12/05 - 16/05)
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="week2-tab" data-bs-toggle="tab" data-bs-target="#week2" type="button" role="tab" aria-controls="week2" aria-selected="true">
+                            Semana 2 (19/05 - 23/05)
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="weekTabsContent">
+                    <!-- Week 1 Tab -->
+                    <div class="tab-pane fade" id="week1" role="tabpanel" aria-labelledby="week1-tab">
+                        <div class="table-container">
+                            <div id="week1Table_wrapper" class="dataTables_wrapper no-footer"><div id="week1Table_filter" class="dataTables_filter"><label>Buscar:<input type="search" class="" placeholder="" aria-controls="week1Table"></label></div><table id="week1Table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
+                                <thead class="table-dark">
+                                    <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="week1Table" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Técnico: activate to sort column descending" style="width: 98.375px;">Técnico</th><th class="sorting" tabindex="0" aria-controls="week1Table" rowspan="1" colspan="1" aria-label="Modalidade: activate to sort column ascending" style="width: 124.516px;">Modalidade</th><th class="sorting" tabindex="0" aria-controls="week1Table" rowspan="1" colspan="1" aria-label="Segunda (12/05): activate to sort column ascending" style="width: 136.547px;">Segunda (12/05)</th><th class="sorting" tabindex="0" aria-controls="week1Table" rowspan="1" colspan="1" aria-label="Terça (13/05): activate to sort column ascending" style="width: 159.797px;">Terça (13/05)</th><th class="sorting" tabindex="0" aria-controls="week1Table" rowspan="1" colspan="1" aria-label="Quarta (14/05): activate to sort column ascending" style="width: 122.094px;">Quarta (14/05)</th><th class="sorting" tabindex="0" aria-controls="week1Table" rowspan="1" colspan="1" aria-label="Quinta (15/05): activate to sort column ascending" style="width: 159.797px;">Quinta (15/05)</th><th class="sorting" tabindex="0" aria-controls="week1Table" rowspan="1" colspan="1" aria-label="Sexta (16/05): activate to sort column ascending" style="width: 159.875px;">Sexta (16/05)</th></tr>
+                                </thead>
+                                <tbody id="week1Body">
+
+                <tr role="row" class="odd">
+                        <td class="sorting_1">Antônio R.</td>
+                        <td>PGD</td>
+                        <td class="bg-remoto">REMOTO</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                    </tr><tr role="row" class="even">
+                        <td class="sorting_1">Edna F.</td>
+                        <td>PGD</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-remoto">REMOTO</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                    </tr><tr role="row" class="odd">
+                        <td class="sorting_1">Francisco F.</td>
+                        <td>PGD</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-remoto">REMOTO</td>
+                    </tr><tr role="row" class="even">
+                        <td class="sorting_1">Guilherme R.</td>
+                        <td>PGD</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-atividade-externa">ATIVIDADE EXTERNA</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-remoto">REMOTO</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                    </tr><tr role="row" class="odd">
+                        <td class="sorting_1">Heron C.</td>
+                        <td>CONT. DE FREQ.</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-atividade-externa">ATIVIDADE EXTERNA</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                    </tr><tr role="row" class="even">
+                        <td class="sorting_1">Igor S.</td>
+                        <td>PGD</td>
+                        <td class="bg-remoto">REMOTO</td>
+                        <td class="bg-atividade-externa">ATIVIDADE EXTERNA</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-atividade-externa">ATIVIDADE EXTERNA</td>
+                        <td class="bg-atividade-externa">ATIVIDADE EXTERNA</td>
+                    </tr><tr role="row" class="odd">
+                        <td class="sorting_1">Iuri B.</td>
+                        <td>PGD</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-remoto">REMOTO</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                    </tr><tr role="row" class="even">
+                        <td class="sorting_1">Lara B.</td>
+                        <td>CONT. DE FREQ.</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                    </tr><tr role="row" class="odd">
+                        <td class="sorting_1">Mateus R.</td>
+                        <td>CONT. DE FREQ.</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                    </tr><tr role="row" class="even">
+                        <td class="sorting_1">Matheus M.</td>
+                        <td>PGD</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-atividade-externa">ATIVIDADE EXTERNA</td>
+                        <td class="bg-remoto">REMOTO</td>
+                    </tr><tr role="row" class="odd">
+                        <td class="sorting_1">Nelson D.</td>
+                        <td>CONT. DE FREQ.</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                    </tr><tr role="row" class="even">
+                        <td class="sorting_1">Valmir R.</td>
+                        <td>PGD</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-remoto">REMOTO</td>
+                    </tr></tbody>
+                            </table></div>
+                        </div>
+                    </div>
+
+                    <!-- Week 2 Tab -->
+                    <div class="tab-pane fade active show" id="week2" role="tabpanel" aria-labelledby="week2-tab">
+                        <div class="table-container">
+                            <div id="week2Table_wrapper" class="dataTables_wrapper no-footer"><div id="week2Table_filter" class="dataTables_filter"><label>Buscar:<input type="search" class="" placeholder="" aria-controls="week2Table"></label></div><table id="week2Table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
+                                <thead class="table-dark">
+                                    <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="week2Table" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Técnico: activate to sort column descending" style="width: 0px;">Técnico</th><th class="sorting" tabindex="0" aria-controls="week2Table" rowspan="1" colspan="1" aria-label="Modalidade: activate to sort column ascending" style="width: 0px;">Modalidade</th><th class="sorting bg-primary text-white" tabindex="0" aria-controls="week2Table" rowspan="1" colspan="1" aria-label="Segunda (19/05): activate to sort column ascending" style="width: 0px;">Segunda (19/05)</th><th class="sorting" tabindex="0" aria-controls="week2Table" rowspan="1" colspan="1" aria-label="Terça (20/05): activate to sort column ascending" style="width: 0px;">Terça (20/05)</th><th class="sorting" tabindex="0" aria-controls="week2Table" rowspan="1" colspan="1" aria-label="Quarta (21/05): activate to sort column ascending" style="width: 0px;">Quarta (21/05)</th><th class="sorting" tabindex="0" aria-controls="week2Table" rowspan="1" colspan="1" aria-label="Quinta (22/05): activate to sort column ascending" style="width: 0px;">Quinta (22/05)</th><th class="sorting" tabindex="0" aria-controls="week2Table" rowspan="1" colspan="1" aria-label="Sexta (23/05): activate to sort column ascending" style="width: 0px;">Sexta (23/05)</th></tr>
+                                </thead>
+                                <tbody id="week2Body">
+                <tr role="row" class="odd">
+                        <td class="sorting_1">Antônio R.</td>
+                        <td>PGD</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-remoto">REMOTO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                    </tr><tr role="row" class="even">
+                        <td class="sorting_1">Edna F.</td>
+                        <td>PGD</td>
+                        <td class="bg-remoto">REMOTO</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                    </tr><tr role="row" class="odd">
+                        <td class="sorting_1">Francisco F.</td>
+                        <td>PGD</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-remoto">REMOTO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                    </tr><tr role="row" class="even">
+                        <td class="sorting_1">Guilherme R.</td>
+                        <td>PGD</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-remoto">REMOTO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                    </tr><tr role="row" class="odd">
+                        <td class="sorting_1">Heron C.</td>
+                        <td>CONT. DE FREQ.</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-atividade-externa">ATIVIDADE EXTERNA</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                    </tr><tr role="row" class="even">
+                        <td class="sorting_1">Igor S.</td>
+                        <td>PGD</td>
+                        <td class="bg-remoto">REMOTO</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-atividade-externa">ATIVIDADE EXTERNA</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                    </tr><tr role="row" class="odd">
+                        <td class="sorting_1">Iuri B.</td>
+                        <td>PGD</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-remoto">REMOTO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                    </tr><tr role="row" class="even">
+                        <td class="sorting_1">Lara B.</td>
+                        <td>CONT. DE FREQ.</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                    </tr><tr role="row" class="odd">
+                        <td class="sorting_1">Mateus R.</td>
+                        <td>CONT. DE FREQ.</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                        <td class="bg-afastamento">AFASTAMENTO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                    </tr><tr role="row" class="even">
+                        <td class="sorting_1">Matheus M.</td>
+                        <td>PGD</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-remoto">REMOTO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                    </tr><tr role="row" class="odd">
+                        <td class="sorting_1">Nelson D.</td>
+                        <td>CONT. DE FREQ.</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                    </tr><tr role="row" class="even">
+                        <td class="sorting_1">Valmir R.</td>
+                        <td>PGD</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-remoto">REMOTO</td>
+                        <td class="bg-presencial">PRESENCIAL</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                        <td class="bg-paralisacao">PARALISAÇÃO</td>
+                    </tr></tbody>
+                            </table></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <!-- <div class="footer text-center">
+            <p class="mb-0">Horário de funcionamento do setor: 07h30 às 16h30</p>
+            <p class="mb-0">Última atualização: Maio/2025</p>
+        </div> -->
+    </div>
+
+    <!-- Scripts -->
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/dataTables.bootstrap5.min.js"></script>
+    <!-- PapaParse for CSV parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+    <script>
+        // Dados do CSV
+        const csvData = `SEMANA 1					,,12/05/2025,13/05/2025,14/05/2025,15/05/2025,16/05/2025
+Técnico,Modalidade,Segunda,Terça ,Quarta,Quinta,Sexta
+Antônio R.,PGD,REMOTO,PRESENCIAL,PRESENCIAL,PRESENCIAL,PRESENCIAL
+Edna F.,PGD,PRESENCIAL,PRESENCIAL,REMOTO,PRESENCIAL,PRESENCIAL
+Francisco F.,PGD,PRESENCIAL,PRESENCIAL,PRESENCIAL,PRESENCIAL,REMOTO
+Guilherme R.,PGD,PRESENCIAL,ATIVIDADE EXTERNA,PRESENCIAL,REMOTO,PRESENCIAL
+Heron C.,CONT. DE FREQ.,PRESENCIAL,PRESENCIAL,PRESENCIAL,ATIVIDADE EXTERNA,PRESENCIAL
+Igor S.,PGD,REMOTO,ATIVIDADE EXTERNA,PRESENCIAL,ATIVIDADE EXTERNA,ATIVIDADE EXTERNA
+Iuri B.,PGD,PRESENCIAL,PRESENCIAL,REMOTO,PRESENCIAL,PRESENCIAL
+Lara B.,CONT. DE FREQ.,AFASTAMENTO,AFASTAMENTO,AFASTAMENTO,AFASTAMENTO,AFASTAMENTO
+Mateus R.,CONT. DE FREQ.,AFASTAMENTO,AFASTAMENTO,AFASTAMENTO,AFASTAMENTO,AFASTAMENTO
+Matheus M.,PGD,PRESENCIAL,PRESENCIAL,PRESENCIAL,ATIVIDADE EXTERNA,REMOTO
+Nelson D.,CONT. DE FREQ.,PRESENCIAL,PRESENCIAL,PRESENCIAL,PRESENCIAL,PRESENCIAL
+Valmir R.,PGD,PRESENCIAL,PRESENCIAL,PRESENCIAL,PRESENCIAL,REMOTO
+,,,,,,
+SEMANA 2,,19/05/2025,20/05/2025,21/05/2025,22/05/2025,23/05/2025
+Técnico,Modalidade,Segunda,Terça ,Quarta,Quinta,Sexta
+Antônio R.,PGD,PRESENCIAL,PRESENCIAL,REMOTO,PARALISAÇÃO,PARALISAÇÃO
+Edna F.,PGD,REMOTO,PRESENCIAL,PRESENCIAL,PARALISAÇÃO,PARALISAÇÃO
+Francisco F.,PGD,PRESENCIAL,PRESENCIAL,REMOTO,PARALISAÇÃO,PARALISAÇÃO
+Guilherme R.,PGD,PRESENCIAL,PRESENCIAL,REMOTO,PARALISAÇÃO,PARALISAÇÃO
+Heron C.,CONT. DE FREQ.,PRESENCIAL,ATIVIDADE EXTERNA,PRESENCIAL,PARALISAÇÃO,PARALISAÇÃO
+Igor S.,PGD,REMOTO,PRESENCIAL,ATIVIDADE EXTERNA,PARALISAÇÃO,PARALISAÇÃO
+Iuri B.,PGD,PRESENCIAL,PRESENCIAL,REMOTO,PARALISAÇÃO,PARALISAÇÃO
+Lara B.,CONT. DE FREQ.,AFASTAMENTO,AFASTAMENTO,AFASTAMENTO,PARALISAÇÃO,PARALISAÇÃO
+Mateus R.,CONT. DE FREQ.,AFASTAMENTO,AFASTAMENTO,AFASTAMENTO,PARALISAÇÃO,PARALISAÇÃO
+Matheus M.,PGD,PRESENCIAL,PRESENCIAL,REMOTO,PARALISAÇÃO,PARALISAÇÃO
+Nelson D.,CONT. DE FREQ.,PRESENCIAL,PRESENCIAL,PRESENCIAL,PARALISAÇÃO,PARALISAÇÃO
+Valmir R.,PGD,PRESENCIAL,REMOTO,PRESENCIAL,PARALISAÇÃO,PARALISAÇÃO
+,,,,,Paralisação TAE,
+Obsvervações:                     ,,,,,,
+- Horário de funcionamento do setor: 07h30 ás 16h30,,,,,,
+"- Sujeito a alteração conforme RESOLUÇÃO CONSUNI/UFG Nº 264, DE 14 DE JUNHO DE 2024",,,,,,
+"- Lara B.: Afastamento conforme a Portaria SIG n° 345/2024, no Processo SEI n° 23070.071858/2023-25",,,,,,
+"- Mateus R.: Afastamento conforme a Portaria SIG nº 6388/2024, no Processo SEI nº 23070.048422/2024-13",,,,,,`;
+
+        // Função para processar o CSV e extrair dados
+        function processCSV(csvText) {
+            const result = Papa.parse(csvText, {
+                skipEmptyLines: true,
+                dynamicTyping: false,
+                // Ajustar o delimitador para resolver problemas de parsing
+                delimiter: ",",
+                delimitersToGuess: [',', '\t', '|', ';']
+            });
+            
+            const week1Data = [];
+            const week2Data = [];
+            
+            let currentWeek = 0;
+            let passedHeader = false;
+            
+            for (let i = 0; i < result.data.length; i++) {
+                const row = result.data[i];
+                
+                // Detectar a Semana 1
+                if (row[0] && row[0].includes("SEMANA 1")) {
+                    currentWeek = 1;
+                    passedHeader = false;
+                    continue;
+                }
+                
+                // Detectar a Semana 2
+                if (row[0] && row[0].includes("SEMANA 2")) {
+                    currentWeek = 2;
+                    passedHeader = false;
+                    continue;
+                }
+                
+                // Pular linha de cabeçalho de cada semana
+                if (row[0] === "Técnico") {
+                    passedHeader = true;
+                    continue;
+                }
+                
+                // Pular linhas vazias
+                if (!row[0] || row[0].trim() === "") {
+                    continue;
+                }
+                
+                // Ignorar linhas de observações
+                if (row[0] && row[0].includes("Obsvervações")) {
+                    break; // Parar de processar a partir daqui
+                }
+                
+                // Processar dados das semanas
+                if (currentWeek === 1 && passedHeader) {
+                    week1Data.push({
+                        tecnico: row[0],
+                        modalidade: row[1],
+                        segunda: row[2],
+                        terca: row[3],
+                        quarta: row[4],
+                        quinta: row[5],
+                        sexta: row[6]
+                    });
+                } else if (currentWeek === 2 && passedHeader) {
+                    week2Data.push({
+                        tecnico: row[0],
+                        modalidade: row[1],
+                        segunda: row[2],
+                        terca: row[3],
+                        quarta: row[4],
+                        quinta: row[5],
+                        sexta: row[6]
+                    });
+                }
+            }
+            
+            console.log("Week 1 Data:", week1Data);
+            console.log("Week 2 Data:", week2Data);
+            
+            return {
+                week1: week1Data,
+                week2: week2Data,
+                observations: []
+            };
+        }
+
+        // Função para exibir status com cor de fundo
+        function getStatusCell(status) {
+            let bgClass = '';
+            
+            switch(status?.toUpperCase()) {
+                case 'REMOTO':
+                    bgClass = 'bg-remoto';
+                    break;
+                case 'PRESENCIAL':
+                    bgClass = 'bg-presencial';
+                    break;
+                case 'ATIVIDADE EXTERNA':
+                    bgClass = 'bg-atividade-externa';
+                    break;
+                case 'AFASTAMENTO':
+                    bgClass = 'bg-afastamento';
+                    break;
+                case 'PARALISAÇÃO':
+                    bgClass = 'bg-paralisacao';
+                    break;
+                default:
+                    bgClass = '';
+            }
+            
+            return `<td class="${bgClass}">${status || ''}</td>`;
+        }
+
+        // Função para preencher a tabela
+        function fillTable(weekData, tableId) {
+            const tableBody = document.getElementById(tableId);
+            tableBody.innerHTML = '';
+            
+            weekData.forEach(row => {
+                let rowHtml = `
+                    <tr>
+                        <td>${row.tecnico}</td>
+                        <td>${row.modalidade}</td>
+                        ${getStatusCell(row.segunda)}
+                        ${getStatusCell(row.terca)}
+                        ${getStatusCell(row.quarta)}
+                        ${getStatusCell(row.quinta)}
+                        ${getStatusCell(row.sexta)}
+                    </tr>
+                `;
+                tableBody.innerHTML += rowHtml;
+            });
+        }
+
+        // Removida função de preencher observações
+
+        // Função para destacar a data atual na tabela
+        function highlightCurrentDate() {
+            const today = new Date();
+            const dayOfWeek = today.getDay(); // 0 = domingo, 1 = segunda, ..., 6 = sábado
+            
+            // Exibir data atual formatada
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').textContent = today.toLocaleDateString('pt-BR', options);
+            
+            // Semana 1: 12/05 a 16/05
+            const week1Start = new Date('2025-05-12');
+            const week1End = new Date('2025-05-16');
+            
+            // Semana 2: 19/05 a 23/05
+            const week2Start = new Date('2025-05-19');
+            const week2End = new Date('2025-05-23');
+            
+            // Verificar em qual semana estamos
+            if (today >= week1Start && today <= week1End) {
+                // Estamos na semana 1
+                document.getElementById('week1-tab').click();
+                
+                // Destacar a coluna correspondente ao dia da semana
+                if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Segunda a sexta
+                    const tables = document.querySelectorAll('#week1Table thead th');
+                    tables[dayOfWeek + 1].classList.add('bg-primary', 'text-white');
+                }
+            } else if (today >= week2Start && today <= week2End) {
+                // Estamos na semana 2
+                document.getElementById('week2-tab').click();
+                
+                // Destacar a coluna correspondente ao dia da semana
+                if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Segunda a sexta
+                    const tables = document.querySelectorAll('#week2Table thead th');
+                    tables[dayOfWeek + 1].classList.add('bg-primary', 'text-white');
+                }
+            }
+        }
+
+        // Inicialização quando o documento estiver pronto
+        $(document).ready(function() {
+            // Processar os dados CSV
+            const data = processCSV(csvData);
+            
+            // Preencher as tabelas
+            fillTable(data.week1, 'week1Body');
+            fillTable(data.week2, 'week2Body');
+            
+            // Removido preenchimento de observações
+            
+            // Inicializar DataTables
+            $('#week1Table').DataTable({
+                responsive: true,
+                paging: false,
+                info: false,
+                searching: false,
+                language: {
+                    // search: "Buscar:",
+                    zeroRecords: "Nenhum registro encontrado",
+                    infoEmpty: "Mostrando 0 registros",
+                    infoFiltered: "(filtrado de _MAX_ registros totais)"
+                }
+            });
+            
+            $('#week2Table').DataTable({
+                responsive: true,
+                paging: false,
+                info: false,
+                searching: false,
+                language: {
+                    // search: "Buscar:",
+                    zeroRecords: "Nenhum registro encontrado",
+                    infoEmpty: "Mostrando 0 registros",
+                    infoFiltered: "(filtrado de _MAX_ registros totais)"
+                }
+            });
+            
+            // Destacar a data atual
+            highlightCurrentDate();
+        });
+    </script>
+
+<div id="automa-palette"></div>
+</body>
+</html>
