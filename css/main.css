@@ -45,28 +45,38 @@ body {
 }
 
 .bg-remoto {
-    background-color: #d4edda !important;
-    color: #155724;
+    background-color: #bfe1f6 !important;
+    font-weight: bold;
+    color: #0a53a8 !important;
 }
 
 .bg-presencial {
-    background-color: #fff3cd !important;
-    color: #856404;
+    background-color: #d4edbc !important;
+    font-weight: bold;
+    color: #11734b !important;
 }
 
 .bg-atividade-externa {
-    background-color: #d1ecf1 !important;
-    color: #0c5460;
+    background-color: #c6dbe1 !important;
+    font-weight: bold;
+    color: #215a6c !important;
 }
 
 .bg-afastamento {
-    background-color: #f8d7da !important;
-    color: #721c24;
+    background-color: #e6cff2 !important;
+    font-weight: bold;
+    color: #5a3286 !important;
+}
+
+.bg-ferias {
+    background-color: #e6cff2 !important;
+    font-weight: bold;
+    color: #5a3286 !important;
 }
 
 .bg-paralisacao {
-    background-color: #e2e3e5 !important;
-    color: #383d41;
+    background-color: #e6cff2 !important;
+    color: #5a3286 !important;
 }
 
 .tab-content {
@@ -76,8 +86,13 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.sorting_1 {
+    font-weight: bold;
+}
+
 .table-container {
     overflow-x: auto;
+    font-weight: bold;
     border-radius: 7px;
 }
 
@@ -107,7 +122,7 @@ body {
     margin-bottom: 15px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 967px) {
     .legend {
         flex-direction: column;
         align-items: flex-start;
