@@ -79,14 +79,28 @@ function processCSV(csvText) {
         if (row[0] && row[0].includes("SEMANA 2")) {
             currentWeek = 2;
             passedHeader = false;
-            // Capturar a linha de datas
-            if (row.length > 2 && row[2]) {
-                week2Dates = row.slice(2).filter(item => item && item.trim() !== "");
-            } else if (i + 1 < result.data.length) {
-                // Se não encontrar na mesma linha, procurar na próxima
-                const nextRow = result.data[i + 1];
-                if (nextRow.length > 2) {
-                    week2Dates = nextRow.slice(2).filter(item => item && item.trim() !== "");
+            // Para semana 2, procurar por uma linha com datas (formato DD/MM/YYYY)
+            // Primeiro verificar se há datas na linha atual
+            let foundDates = false;
+            if (row.length > 2) {
+                const potentialDates = row.slice(2).filter(item => item && item.trim() !== "");
+                if (potentialDates.some(item => /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(item))) {
+                    week2Dates = potentialDates;
+                    foundDates = true;
+                }
+            }
+            
+            // Se não encontrou datas, procurar nas próximas linhas
+            if (!foundDates) {
+                for (let j = i + 1; j < Math.min(i + 5, result.data.length); j++) {
+                    const searchRow = result.data[j];
+                    if (searchRow && searchRow.length > 2) {
+                        const potentialDates = searchRow.slice(2).filter(item => item && item.trim() !== "");
+                        if (potentialDates.some(item => /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(item))) {
+                            week2Dates = potentialDates;
+                            break;
+                        }
+                    }
                 }
             }
             continue;
@@ -223,14 +237,35 @@ function updateTableHeaders(weekDates, weekNumber) {
     }
 }
 
+// Função para remover destaque anterior
+function removeHighlight() {
+    // Remove destaque de todas as colunas de ambas as tabelas
+    const allHeaders = document.querySelectorAll('#week1Table thead th, #week2Table thead th');
+    allHeaders.forEach(header => {
+        header.classList.remove('bg-primary', 'text-white', 'current-day-highlight');
+    });
+    
+    // Remove destaque das células do corpo das tabelas
+    const allCells = document.querySelectorAll('#week1Table tbody td, #week2Table tbody td');
+    allCells.forEach(cell => {
+        cell.classList.remove('current-day-highlight');
+    });
+}
+
 // Função para destacar a data atual na tabela
 function highlightCurrentDate() {
     const today = new Date();
     const dayOfWeek = today.getDay(); // 0 = domingo, 1 = segunda, ..., 6 = sábado
     
+    console.log('Dia da semana atual:', dayOfWeek); // Debug
+    console.log('Data atual:', today.toLocaleDateString('pt-BR')); // Debug
+    
     // Exibir data atual formatada
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    document.getElementById('current-date').textContent = today.toLocaleDateString('pt-BR', options);
+    const currentDateElement = document.getElementById('current-date');
+    if (currentDateElement) {
+        currentDateElement.textContent = today.toLocaleDateString('pt-BR', options);
+    }
     
     // Função para verificar se a data está no formato DD/MM/YYYY
     function isDateFormat(str) {
@@ -257,34 +292,126 @@ function highlightCurrentDate() {
         return date >= startDate && date <= endDate;
     }
     
-    // Obter as datas das semanas dos elementos atualizados
-    const week1Dates = document.getElementById('week1-dates').textContent.split(' - ');
-    const week2Dates = document.getElementById('week2-dates').textContent.split(' - ');
+    // Função para encontrar qual data específica corresponde ao dia atual
+    function findCurrentDateInWeek(weekDates, currentDate) {
+        console.log('Procurando data atual em:', weekDates); // Debug
+        for (let i = 0; i < weekDates.length; i++) {
+            const dateObj = parseDate(weekDates[i]);
+            console.log(`Comparando ${weekDates[i]} com ${currentDate.toLocaleDateString('pt-BR')}`); // Debug
+            if (dateObj && 
+                dateObj.getDate() === currentDate.getDate() &&
+                dateObj.getMonth() === currentDate.getMonth() &&
+                dateObj.getFullYear() === currentDate.getFullYear()) {
+                console.log(`Data encontrada no índice ${i}`); // Debug
+                return i; // Retorna o índice da data encontrada
+            }
+        }
+        return -1; // Não encontrou
+    }
     
-    // Se estamos na semana 1
-    if (week1Dates.length === 2 && isDateInRange(today, week1Dates[0], week1Dates[1])) {
-        document.getElementById('week1-tab').click();
-        
-        // Destacar a coluna correspondente ao dia da semana
-        if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Segunda a sexta
-            const tables = document.querySelectorAll('#week1Table thead th');
-            tables[dayOfWeek + 1].classList.add('bg-primary', 'text-white');
+    // Remover destaque anterior
+    removeHighlight();
+    
+    // Verificar se é dia da semana (segunda a sexta)
+    if (dayOfWeek < 1 || dayOfWeek > 5) {
+        console.log('Fim de semana - não há destaque'); // Debug
+        return; // Não destacar em finais de semana
+    }
+    
+    // Processar dados para obter as datas corretas
+    const data = processCSV(csvData);
+    console.log('Datas da semana 1:', data.week1Dates); // Debug
+    console.log('Datas da semana 2:', data.week2Dates); // Debug
+    
+    let activeWeek = null;
+    let dayIndex = -1;
+    
+    // Verificar se a data atual está na semana 1
+    if (data.week1Dates && data.week1Dates.length >= 5) {
+        dayIndex = findCurrentDateInWeek(data.week1Dates, today);
+        if (dayIndex >= 0) {
+            activeWeek = 1;
+            console.log('Semana 1 ativa, índice do dia:', dayIndex); // Debug
         }
-    } 
-    // Se estamos na semana 2
-    else if (week2Dates.length === 2 && isDateInRange(today, week2Dates[0], week2Dates[1])) {
-        document.getElementById('week2-tab').click();
-        
-        // Destacar a coluna correspondente ao dia da semana
-        if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Segunda a sexta
-            const tables = document.querySelectorAll('#week2Table thead th');
-            tables[dayOfWeek + 1].classList.add('bg-primary', 'text-white');
+    }
+    
+    // Se não encontrou na semana 1, verificar semana 2
+    if (activeWeek === null && data.week2Dates && data.week2Dates.length >= 5) {
+        dayIndex = findCurrentDateInWeek(data.week2Dates, today);
+        if (dayIndex >= 0) {
+            activeWeek = 2;
+            console.log('Semana 2 ativa, índice do dia:', dayIndex); // Debug
         }
+    }
+    
+    // Se ainda não encontrou, tentar destacar baseado no dia da semana atual
+    // (fallback para quando as datas do CSV não correspondem à data atual)
+    if (activeWeek === null) {
+        console.log('Data atual não encontrada nas semanas. Usando fallback baseado no dia da semana.'); // Debug
+        
+        // Mapear dia da semana para índice (Segunda=0, Terça=1, etc.)
+        const dayMapping = {
+            1: 0, // Segunda
+            2: 1, // Terça
+            3: 2, // Quarta
+            4: 3, // Quinta
+            5: 4  // Sexta
+        };
+        
+        dayIndex = dayMapping[dayOfWeek];
+        activeWeek = 1; // Usar semana 1 como padrão
+        
+        console.log('Usando fallback - Semana:', activeWeek, 'Índice do dia:', dayIndex); // Debug
+    }
+    
+    if (activeWeek && dayIndex >= 0) {
+        // Ativar a aba correta
+        const tabElement = document.getElementById(`week${activeWeek}-tab`);
+        if (tabElement) {
+            tabElement.click();
+        }
+        
+        // Destacar o cabeçalho da coluna
+        // Índice da coluna: 0=Técnico, 1=Modalidade, 2=Segunda, 3=Terça, 4=Quarta, 5=Quinta, 6=Sexta
+        const columnIndex = dayIndex + 2; // +2 para pular as colunas Técnico e Modalidade
+        
+        const headerSelector = `#week${activeWeek}Table thead th:nth-child(${columnIndex + 1})`;
+        const headerElement = document.querySelector(headerSelector);
+        
+        console.log('Seletor do cabeçalho:', headerSelector); // Debug
+        console.log('Elemento do cabeçalho encontrado:', headerElement); // Debug
+        
+        if (headerElement) {
+            headerElement.classList.add('bg-primary', 'text-white', 'current-day-highlight');
+            
+            // Destacar também todas as células dessa coluna no corpo da tabela
+            const cellSelector = `#week${activeWeek}Table tbody td:nth-child(${columnIndex + 1})`;
+            const cells = document.querySelectorAll(cellSelector);
+            
+            console.log('Seletor das células:', cellSelector); // Debug
+            console.log('Células encontradas:', cells.length); // Debug
+            
+            cells.forEach(cell => {
+                cell.classList.add('current-day-highlight');
+                // Adicionar um estilo inline como fallback
+                cell.style.backgroundColor = '#007bff';
+                cell.style.color = 'white';
+                cell.style.fontWeight = 'bold';
+            });
+            
+            console.log('Destaque aplicado com sucesso!'); // Debug
+        } else {
+            console.log('Elemento do cabeçalho não encontrado'); // Debug
+        }
+    } else {
+        console.log('Não foi possível determinar semana ativa ou índice do dia'); // Debug
     }
 }
 
 // Inicialização quando o documento estiver pronto
 $(document).ready(function() {
+    console.log('Documento carregado'); // Debug
+    
     // Processar os dados CSV
     const data = processCSV(csvData);
     
@@ -323,6 +450,20 @@ $(document).ready(function() {
         }
     });
     
-    // Destacar a data atual
-    highlightCurrentDate();
+    // Aguardar um pouco para garantir que as tabelas foram renderizadas
+    setTimeout(() => {
+        highlightCurrentDate();
+    }, 500);
+    
+    // Adicionar CSS personalizado para o destaque
+    const style = document.createElement('style');
+    style.textContent = `
+        .current-day-highlight {
+            border-right: 3px solid #0056b3 !important;
+            border-left: 3px solid #0056b3 !important;
+            font-weight: bold !important;
+            
+        }
+    `;
+    document.head.appendChild(style);
 });
