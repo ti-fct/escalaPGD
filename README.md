@@ -7,5 +7,5 @@ Este projeto é uma plataforma web desenvolvida para facilitar a visualização 
 
 ## Tecnologias utilizadas
 - Front-end: HTML, CSS, JavaScript
-- Back-end: Python
+- Back-end: Python, API Github, API Google Planilhas, CRON
 - Hospedagem: Google Sites, Github Pages

@@ -4,19 +4,17 @@ import os
 from dotenv import load_dotenv
 from github import Github, GithubException
 
+
 CREDENTIALS_FILE = 'service_account.json'
 OUTPUT_CSV_FILENAME = 'planilha_exportada.csv'
 
+# --- Configurações do GitHub ---
 load_dotenv()
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 GITHUB_OWNER = 'ti-fct'
 GITHUB_REPO_NAME = 'escalaPGD'
 GITHUB_BRANCH = 'main'
 GITHUB_FILE_PATH = 'utils/'+OUTPUT_CSV_FILENAME
-
-if not GITHUB_TOKEN:
-    print("Erro: GITHUB_TOKEN não encontrado nas variáveis de ambiente.\n Verifique o arquivo .env")
-    exit()
 
 try:
     gc = gspread.service_account(filename=CREDENTIALS_FILE)
@@ -31,7 +29,6 @@ SPREADSHEET_ID = '17AhmFnhjVGqSyCqa-BDu7Mk4JyvS21H0FCNuH5RhpYc'
 WORKSHEET_NAME = 'APOIO TÉCNICO'
 
 def get_sheet_data_as_dataframe(spreadsheet_id, worksheet_name):
-
     try:
         spreadsheet = gc.open_by_key(spreadsheet_id)
         worksheet = spreadsheet.worksheet(worksheet_name)
@@ -43,7 +40,8 @@ def get_sheet_data_as_dataframe(spreadsheet_id, worksheet_name):
         
         # A primeira linha é o cabeçalho
         df = pd.DataFrame(data[1:], columns=data[0])
-        df = df.fillna('') # Converte NaN para string vazia em todo o DataFrame
+        # Converte NaN para string vazia em todo o DataFrame - CORRIGIDO
+        df = df.fillna('')
         return df
     except gspread.exceptions.SpreadsheetNotFound:
         print(f"Erro: Planilha com o ID '{spreadsheet_id}' não encontrada ou você não tem acesso.")
@@ -57,17 +55,25 @@ def get_sheet_data_as_dataframe(spreadsheet_id, worksheet_name):
 
 def upload_to_github(file_path, owner, repo_name, branch, github_file_path):
 
+    if not GITHUB_TOKEN:
+        print("Erro: GITHUB_TOKEN não encontrado nas variáveis de ambiente.")
+        return False
+    
     g = Github(GITHUB_TOKEN)
-    user = g.get_user()
-
+    
     try:
-        repo = g.get_user(owner).get_repo(repo_name) if owner != user.login else g.get_user().get_repo(repo_name)
-
+        repo = g.get_repo(f"{owner}/{repo_name}")
     except GithubException as e:
         print(f"Erro ao acessar o repositório '{owner}/{repo_name}': {e}")
+        print("Verifique se o nome do repositório/proprietário está correto e se o token tem permissões adequadas.")
         return False
     except Exception as e:
         print(f"Erro inesperado ao obter repositório: {e}")
+        return False
+
+    # Verifica se o arquivo existe antes de tentar lê-lo
+    if not os.path.exists(file_path):
+        print(f"Erro: Arquivo '{file_path}' não encontrado.")
         return False
 
     with open(file_path, 'rb') as f:
@@ -93,11 +99,11 @@ def upload_to_github(file_path, owner, repo_name, branch, github_file_path):
     return True
 
 def compare_and_download_csv(output_filename, new_dataframe):
-
     if not os.path.exists(output_filename):
         print(f"Arquivo '{output_filename}' não encontrado. Realizando o download inicial.")
         new_dataframe.to_csv(output_filename, index=False, encoding='utf-8')
         print(f"Planilha exportada com sucesso para '{output_filename}'")
+        upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
         return True
     
     try:
@@ -108,6 +114,8 @@ def compare_and_download_csv(output_filename, new_dataframe):
         print("Prosseguindo com o download do novo arquivo.")
         new_dataframe.to_csv(output_filename, index=False, encoding='utf-8')
         print(f"Planilha exportada com sucesso para '{output_filename}'")
+        # CORRIGIDO: Passa o caminho do arquivo, não o DataFrame
+        upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
         return True
 
     # Compara os DataFrames
@@ -118,27 +126,24 @@ def compare_and_download_csv(output_filename, new_dataframe):
         print("Alterações detectadas! Realizando o download do novo arquivo CSV.")
         new_dataframe.to_csv(output_filename, index=False, encoding='utf-8')
         print(f"Planilha exportada com sucesso para '{output_filename}'")
+        # CORRIGIDO: Passa o caminho do arquivo, não o DataFrame
+        upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
+        
+        print("Conteúdo do arquivo CSV existente:")
+        print(existing_df)
+
+        print("Conteúdo do novo arquivo:")
+        print(new_dataframe)
         return True
 
 
-# Lógica principal
+# Lógica principal ---
 print("Obtendo dados da planilha do Google Sheets...")
 new_df = get_sheet_data_as_dataframe(SPREADSHEET_ID, WORKSHEET_NAME)
 
 if new_df is not None:
     if not new_df.empty:
-        # Verifica se houve mudanças no arquivo CSV
-        file_was_updated = compare_and_download_csv(OUTPUT_CSV_FILENAME, new_df)
-        
-        # Se o arquivo foi atualizado, faz upload para o GitHub
-        if file_was_updated:
-            print("\nTentando enviar o arquivo para o GitHub...")
-            if upload_to_github(OUTPUT_CSV_FILENAME, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH):
-                print("Upload para o GitHub concluído com sucesso!")
-            else:
-                print("Falha no upload para o GitHub.")
-        else:
-            print("Nenhuma mudança detectada. Upload para GitHub não necessário.")
+        compare_and_download_csv(OUTPUT_CSV_FILENAME, new_df)
     else:
         print("Os dados da planilha estão vazios. Nenhum CSV será gerado ou atualizado.")
 else:
