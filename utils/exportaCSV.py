@@ -1,9 +1,11 @@
-import gspread
+#import pip
+#pip.main(["install", "gspread", "pandas", "python-dotenv", "PyGithub"])
+
 import pandas as pd
-import os
 from dotenv import load_dotenv
 from github import Github, GithubException
-
+import gspread
+import os
 
 CREDENTIALS_FILE = 'service_account.json'
 OUTPUT_CSV_FILENAME = 'planilha_exportada.csv'

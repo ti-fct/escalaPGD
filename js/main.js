@@ -157,6 +157,8 @@ function getStatusCell(status) {
             break;
         case 'FÉRIAS':
             bgClass = 'bg-ferias';
+        case 'FERIADO':
+            bgClass = 'bg-ferias';
         case 'LICENÇA':
             bgClass = 'bg-licenca';
             break;
