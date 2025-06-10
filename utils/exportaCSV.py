@@ -42,8 +42,9 @@ def get_sheet_data_as_dataframe(spreadsheet_id, worksheet_name):
         
         # A primeira linha é o cabeçalho
         df = pd.DataFrame(data[1:], columns=data[0])
-        # Converte NaN para string vazia em todo o DataFrame - CORRIGIDO
+        # Converte NaN para string vazia em todo o DataFrame
         df = df.fillna('')
+        df.drop(columns=['Unnamed: 7'], inplace=True, errors='ignore')  # Remove a coluna H se existir
         return df
     except gspread.exceptions.SpreadsheetNotFound:
         print(f"Erro: Planilha com o ID '{spreadsheet_id}' não encontrada ou você não tem acesso.")
