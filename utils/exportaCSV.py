@@ -12,7 +12,7 @@ from datetime import datetime
 # Configuração do logging
 logging.basicConfig(filename='/home/suporte/escalaPGD/utils/logs.txt', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-CREDENTIALS_FILE = '/home/suporte/escalaPGD/utils/sservice_account.json'
+CREDENTIALS_FILE = '/home/suporte/escalaPGD/utils/service_account.json'
 OUTPUT_CSV_FILENAME = 'planilha_exportada.csv'
 
 # --- Configurações do GitHub ---
@@ -25,7 +25,7 @@ GITHUB_FILE_PATH = 'utils/'+OUTPUT_CSV_FILENAME
 
 def enviar_mensagem_erro(mensagem):
     print(mensagem) 
-    logging.error(mensagem, exc_info=True)
+    logging.error(mensagem+'\n', exc_info=True)
 
 try:
     gc = gspread.service_account(filename=CREDENTIALS_FILE)
@@ -61,19 +61,16 @@ def get_sheet_data_as_dataframe(spreadsheet_id, worksheet_name):
         enviar_mensagem_erro(mensagem_erro)
         return None
     except gspread.exceptions.WorksheetNotFound:
-        mensagem_erro = f"Erro: Aba com o nome '{worksheet_name}' não encontrada na planilha."
-        enviar_mensagem_erro(mensagem_erro)
+        enviar_mensagem_erro(f"Erro: Aba com o nome '{worksheet_name}' não encontrada na planilha.")
         return None
     except Exception as e:
-        mensagem_erro = f"Ocorreu um erro ao obter os dados da planilha: {e}"
-        enviar_mensagem_erro(mensagem_erro)
+        enviar_mensagem_erro(f"Ocorreu um erro ao obter os dados da planilha: {e}")
         return None
 
 def upload_to_github(file_path, owner, repo_name, branch, github_file_path):
 
     if not GITHUB_TOKEN:
-        mensagem_erro = "Erro: GITHUB_TOKEN não encontrado nas variáveis de ambiente."
-        enviar_mensagem_erro(mensagem_erro)
+        enviar_mensagem_erro("Erro: GITHUB_TOKEN não encontrado nas variáveis de ambiente.")
         return False
 
     g = Github(GITHUB_TOKEN)
@@ -101,7 +98,7 @@ def upload_to_github(file_path, owner, repo_name, branch, github_file_path):
         # Tenta obter o arquivo para verificar se existe e pegar o SHA
         file_in_github = repo.get_contents(github_file_path, ref=branch)
         repo.update_file(file_in_github.path, commit_message, content, file_in_github.sha, branch=branch)
-        mensagem_info = f"Arquivo '{github_file_path}' atualizado com sucesso no GitHub!"
+        mensagem_info = f"Arquivo '{github_file_path}' atualizado com sucesso no GitHub! \n"
         print(mensagem_info)
         logging.info(mensagem_info)
     except GithubException as e:
@@ -137,12 +134,12 @@ def compare_and_download_csv(output_filename, new_dataframe):
 
     # Compara os DataFrames
     if existing_df.equals(new_dataframe):
-        mensagem_info = "Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado."
+        mensagem_info = "Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. \n"
         print(mensagem_info)
         logging.info(mensagem_info)
         return False
     else:
-        mensagem_info = "Alterações detectadas entre a planilha atual e o arquivo CSV existente."
+        mensagem_info = "Alterações detectadas entre a planilha atual e o arquivo CSV existente. \n"
         print(mensagem_info)
         logging.info(mensagem_info)
 
@@ -150,7 +147,7 @@ def compare_and_download_csv(output_filename, new_dataframe):
         upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
         
         print(f"Planilha exportada com sucesso para '{output_filename}'")
-        logging.info(f"Planilha exportada com sucesso para '{output_filename}'")
+        logging.info(f"Planilha exportada com sucesso para '{output_filename}' \n")
         
         return True
 
