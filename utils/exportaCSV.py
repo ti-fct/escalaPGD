@@ -7,7 +7,7 @@ from github import Github, GithubException
 import gspread
 import os
 
-CREDENTIALS_FILE = 'service_account.json'
+CREDENTIALS_FILE = '/home/suporte/escalaPGD/utils/service_account.json'
 OUTPUT_CSV_FILENAME = 'planilha_exportada.csv'
 
 # --- Configurações do GitHub ---
@@ -112,12 +112,12 @@ def compare_and_download_csv(output_filename, new_dataframe):
     try:
         existing_df = pd.read_csv(output_filename, encoding='utf-8')
         existing_df = existing_df.fillna('')  # Converte NaN para string vazia
+        existing_df.drop(columns=['Unnamed: 7'], inplace=True, errors='ignore')  # Remove a coluna H se existir
     except Exception as e:
         print(f"Erro ao ler o arquivo CSV existente '{output_filename}': {e}")
         print("Prosseguindo com o download do novo arquivo.")
         new_dataframe.to_csv(output_filename, index=False, encoding='utf-8')
         print(f"Planilha exportada com sucesso para '{output_filename}'")
-        # CORRIGIDO: Passa o caminho do arquivo, não o DataFrame
         upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
         return True
 
