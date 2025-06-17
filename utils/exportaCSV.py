@@ -6,8 +6,13 @@ from dotenv import load_dotenv
 from github import Github, GithubException
 import gspread
 import os
+import logging
+from datetime import datetime
 
-CREDENTIALS_FILE = '/home/suporte/escalaPGD/utils/service_account.json'
+# Configuração do logging
+logging.basicConfig(filename='/home/suporte/escalaPGD/utils/logs.txt', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+CREDENTIALS_FILE = '/home/suporte/escalaPGD/utils/sservice_account.json'
 OUTPUT_CSV_FILENAME = 'planilha_exportada.csv'
 
 # --- Configurações do GitHub ---
@@ -18,13 +23,18 @@ GITHUB_REPO_NAME = 'escalaPGD'
 GITHUB_BRANCH = 'main'
 GITHUB_FILE_PATH = 'utils/'+OUTPUT_CSV_FILENAME
 
+def enviar_mensagem_erro(mensagem):
+    print(mensagem) 
+    logging.error(mensagem, exc_info=True)
+
 try:
     gc = gspread.service_account(filename=CREDENTIALS_FILE)
 except Exception as e:
-    print(f"Erro ao carregar as credenciais: {e}")
-    print("Certifique-se de que o arquivo de credenciais está correto e no local especificado.")
-    print("Se estiver usando uma conta de serviço, verifique se o e-mail da conta de serviço")
-    print("foi adicionado como editor na planilha do Google Sheets.")
+    mensagem_erro = f"Erro ao carregar as credenciais do Google Sheets: {e} \n"
+    " Certifique-se de que o arquivo de credenciais está correto e no local especificado. \n"
+    " Se estiver usando uma conta de serviço, verifique se o e-mail da conta de serviço \n"
+    " foi adicionado como editor na planilha do Google Sheets."
+    enviar_mensagem_erro(mensagem_erro)
     exit()
 
 SPREADSHEET_ID = '17AhmFnhjVGqSyCqa-BDu7Mk4JyvS21H0FCNuH5RhpYc'
@@ -47,36 +57,39 @@ def get_sheet_data_as_dataframe(spreadsheet_id, worksheet_name):
         df.drop(columns=['Unnamed: 7'], inplace=True, errors='ignore')  # Remove a coluna H se existir
         return df
     except gspread.exceptions.SpreadsheetNotFound:
-        print(f"Erro: Planilha com o ID '{spreadsheet_id}' não encontrada ou você não tem acesso.")
+        mensagem_erro = f"Erro: Planilha com o ID '{spreadsheet_id}' não encontrada ou você não tem acesso."
+        enviar_mensagem_erro(mensagem_erro)
         return None
     except gspread.exceptions.WorksheetNotFound:
-        print(f"Erro: Aba com o nome '{worksheet_name}' não encontrada na planilha.")
+        mensagem_erro = f"Erro: Aba com o nome '{worksheet_name}' não encontrada na planilha."
+        enviar_mensagem_erro(mensagem_erro)
         return None
     except Exception as e:
-        print(f"Ocorreu um erro ao obter os dados da planilha: {e}")
+        mensagem_erro = f"Ocorreu um erro ao obter os dados da planilha: {e}"
+        enviar_mensagem_erro(mensagem_erro)
         return None
 
 def upload_to_github(file_path, owner, repo_name, branch, github_file_path):
 
     if not GITHUB_TOKEN:
-        print("Erro: GITHUB_TOKEN não encontrado nas variáveis de ambiente.")
+        mensagem_erro = "Erro: GITHUB_TOKEN não encontrado nas variáveis de ambiente."
+        enviar_mensagem_erro(mensagem_erro)
         return False
-    
+
     g = Github(GITHUB_TOKEN)
     
     try:
         repo = g.get_repo(f"{owner}/{repo_name}")
     except GithubException as e:
-        print(f"Erro ao acessar o repositório '{owner}/{repo_name}': {e}")
-        print("Verifique se o nome do repositório/proprietário está correto e se o token tem permissões adequadas.")
+        enviar_mensagem_erro(f"Erro ao acessar o repositório '{owner}/{repo_name}': {e}")
         return False
     except Exception as e:
-        print(f"Erro inesperado ao obter repositório: {e}")
+        enviar_mensagem_erro(f"Erro inesperado ao obter repositório: {e}")
         return False
 
     # Verifica se o arquivo existe antes de tentar lê-lo
     if not os.path.exists(file_path):
-        print(f"Erro: Arquivo '{file_path}' não encontrado.")
+        enviar_mensagem_erro(f"Erro: Arquivo '{file_path}' não encontrado.")
         return False
 
     with open(file_path, 'rb') as f:
@@ -88,16 +101,18 @@ def upload_to_github(file_path, owner, repo_name, branch, github_file_path):
         # Tenta obter o arquivo para verificar se existe e pegar o SHA
         file_in_github = repo.get_contents(github_file_path, ref=branch)
         repo.update_file(file_in_github.path, commit_message, content, file_in_github.sha, branch=branch)
-        print(f"Arquivo '{github_file_path}' atualizado com sucesso no GitHub!")
+        mensagem_info = f"Arquivo '{github_file_path}' atualizado com sucesso no GitHub!"
+        print(mensagem_info)
+        logging.info(mensagem_info)
     except GithubException as e:
         if e.status == 404:
             repo.create_file(github_file_path, commit_message, content, branch=branch)
             print(f"Arquivo '{github_file_path}' criado com sucesso no GitHub!")
         else:
-            print(f"Erro do GitHub ao enviar arquivo: {e.status} - {e.data}")
+            enviar_mensagem_erro(f"Erro do GitHub ao enviar arquivo: {e.status} - {e.data}")
             return False
     except Exception as e:
-        print(f"Erro inesperado ao enviar arquivo para o GitHub: {e}")
+        enviar_mensagem_erro(f"Erro inesperado ao enviar arquivo para o GitHub: {e}")
         return False
     return True
 
@@ -114,29 +129,29 @@ def compare_and_download_csv(output_filename, new_dataframe):
         existing_df = existing_df.fillna('')  # Converte NaN para string vazia
         existing_df.drop(columns=['Unnamed: 7'], inplace=True, errors='ignore')  # Remove a coluna H se existir
     except Exception as e:
-        print(f"Erro ao ler o arquivo CSV existente '{output_filename}': {e}")
-        print("Prosseguindo com o download do novo arquivo.")
+        enviar_mensagem_erro(f"Erro ao ler o arquivo CSV existente '{output_filename}': {e}")
         new_dataframe.to_csv(output_filename, index=False, encoding='utf-8')
-        print(f"Planilha exportada com sucesso para '{output_filename}'")
+        enviar_mensagem_erro(f"Planilha exportada com sucesso para '{output_filename}'")
         upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
         return True
 
     # Compara os DataFrames
     if existing_df.equals(new_dataframe):
-        print("Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.")
+        mensagem_info = "Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado."
+        print(mensagem_info)
+        logging.info(mensagem_info)
         return False
     else:
-        print("Alterações detectadas! Realizando o download do novo arquivo CSV.")
+        mensagem_info = "Alterações detectadas entre a planilha atual e o arquivo CSV existente."
+        print(mensagem_info)
+        logging.info(mensagem_info)
+
         new_dataframe.to_csv(output_filename, index=False, encoding='utf-8')
-        print(f"Planilha exportada com sucesso para '{output_filename}'")
-        # CORRIGIDO: Passa o caminho do arquivo, não o DataFrame
         upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
         
-        print("Conteúdo do arquivo CSV existente:")
-        print(existing_df)
-
-        print("Conteúdo do novo arquivo:")
-        print(new_dataframe)
+        print(f"Planilha exportada com sucesso para '{output_filename}'")
+        logging.info(f"Planilha exportada com sucesso para '{output_filename}'")
+        
         return True
 
 
@@ -148,6 +163,10 @@ if new_df is not None:
     if not new_df.empty:
         compare_and_download_csv(OUTPUT_CSV_FILENAME, new_df)
     else:
-        print("Os dados da planilha estão vazios. Nenhum CSV será gerado ou atualizado.")
+        mensagem_info = "Os dados da planilha estão vazios. Nenhum CSV será gerado ou atualizado."
+        print(mensagem_info)
+        logging.info(mensagem_info)
 else:
-    print("Não foi possível obter os dados da planilha. Verifique as mensagens de erro acima.")
+    mensagem_info = "Não foi possível obter os dados da planilha. Verifique as mensagens de erro acima."
+    logging.error(mensagem_info)
+    print(mensagem_info)
