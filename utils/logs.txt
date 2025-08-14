@@ -687,3 +687,24 @@ google.auth.exceptions.TransportError: HTTPSConnectionPool(host='oauth2.googleap
 
 2025-08-14 09:00:06,788 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
 
+2025-08-14 12:00:05,848 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
+2025-08-14 15:41:57,848 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-08-14 15:42:00,345 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-08-14 15:42:00,347 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-08-14 15:43:52,443 - ERROR - Erro ao carregar as credenciais do Google Sheets: name 'CREDENTIALS_FILEttt' is not defined 
+
+Traceback (most recent call last):
+  File "/home/suporte/escalaPGD/utils/exportaCSV.py", line 33, in <module>
+    gc = gspread.service_account(filename=CREDENTIALS_FILEttt)
+                                          ^^^^^^^^^^^^^^^^^^^
+NameError: name 'CREDENTIALS_FILEttt' is not defined. Did you mean: 'CREDENTIALS_FILE'?
+2025-08-14 15:45:40,551 - ERROR - Ocorreu um erro ao obter os dados da planilha: name 'spreadsheet_idsd' is not defined
+Traceback (most recent call last):
+  File "/home/suporte/escalaPGD/utils/exportaCSV.py", line 47, in get_sheet_data_as_dataframe
+    spreadsheet = gc.open_by_key(spreadsheet_idsd)
+                                 ^^^^^^^^^^^^^^^^
+NameError: name 'spreadsheet_idsd' is not defined. Did you mean: 'spreadsheet_id'?
+2025-08-14 15:45:41,633 - ERROR - Não foi possível obter os dados da planilha. Verifique as mensagens de erro acima.

@@ -8,6 +8,7 @@ import gspread
 import os
 import logging
 from datetime import datetime
+import Send_to_GoogleChat
 
 # Configuração do logging
 logging.basicConfig(filename='/home/suporte/escalaPGD/utils/logs.txt', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -26,6 +27,7 @@ GITHUB_FILE_PATH = 'utils/'+OUTPUT_CSV_FILENAME
 def enviar_mensagem_erro(mensagem):
     print(mensagem) 
     logging.error(mensagem+'\n', exc_info=True)
+    Send_to_GoogleChat.alert_erro(mensagem)
 
 try:
     gc = gspread.service_account(filename=CREDENTIALS_FILE)
