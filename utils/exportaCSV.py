@@ -134,7 +134,7 @@ def compare_and_download_csv(output_filename, new_dataframe):
 
     # Compara os DataFrames
     if existing_df.equals(new_dataframe):
-        mensagem_info = "Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. \n"
+        mensagem_info = "Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado."
         print(mensagem_info)
         logging.info(mensagem_info)
         return False

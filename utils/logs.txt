@@ -1,2 +1,689 @@
 2025-06-17 16:46:27,419 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
 
+2025-06-17 18:00:04,034 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-18 07:00:04,976 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-18 18:00:05,068 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-19 07:00:04,458 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-19 18:00:04,930 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-20 07:00:04,286 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-20 18:00:04,613 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-21 07:00:04,048 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-21 18:00:04,653 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-22 07:00:03,929 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-22 18:00:04,264 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-23 07:00:04,510 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-23 18:00:05,183 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-24 07:00:04,444 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-24 18:00:06,996 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-25 07:00:04,346 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-25 18:00:04,672 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-26 07:00:04,229 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-26 18:00:04,464 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-27 07:00:05,198 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-27 18:00:04,407 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-28 07:00:03,712 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-06-28 07:00:06,037 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-06-28 07:00:06,038 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-06-28 18:00:04,396 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-29 07:00:04,963 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-29 18:00:04,488 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-30 07:00:05,229 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-06-30 10:36:06,883 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-06-30 10:36:09,083 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-06-30 10:36:09,084 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-06-30 18:00:04,848 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-06-30 18:00:07,054 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-06-30 18:00:07,055 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-07-01 07:00:04,009 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-01 18:00:04,340 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-07-01 18:00:06,619 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-07-01 18:00:06,620 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-07-02 07:00:04,547 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-02 18:00:03,785 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-07-02 18:00:05,978 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-07-02 18:00:05,979 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-07-03 07:00:04,286 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-03 18:00:05,375 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-07-03 18:00:07,494 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-07-03 18:00:07,496 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-07-04 07:00:04,181 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-04 18:00:04,756 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-07-04 18:00:07,092 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-07-04 18:00:07,093 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-07-05 07:00:04,970 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-05 18:00:04,986 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-06 07:00:05,899 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-06 18:00:04,560 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-07 07:00:05,163 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-07 18:00:04,694 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-07-07 18:00:07,301 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-07-07 18:00:07,303 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-07-08 07:00:04,147 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-08 18:00:04,544 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-09 07:00:04,140 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-09 12:00:04,780 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-07-09 12:00:07,286 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-07-09 12:00:07,287 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-07-09 18:00:05,265 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-10 07:00:04,643 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-10 09:00:05,048 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-10 12:00:04,509 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-10 18:00:04,932 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-11 07:00:04,584 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-11 09:00:04,811 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-11 12:00:05,333 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-07-11 12:00:08,543 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-07-11 12:00:08,544 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-07-11 18:00:04,063 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-12 07:00:05,002 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-12 09:00:04,027 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-12 12:00:04,518 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-12 18:00:04,259 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-13 07:00:04,915 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-13 09:00:03,835 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-13 12:00:04,149 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-13 18:00:05,799 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-14 07:00:04,213 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-14 09:00:04,528 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-14 12:00:04,645 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-14 18:00:04,563 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-15 07:00:04,634 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-15 09:00:06,750 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-15 12:00:04,552 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-15 18:00:04,112 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-16 07:00:04,985 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-16 09:00:03,940 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-16 12:00:04,590 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-16 18:00:04,570 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-17 07:00:04,550 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-17 09:00:04,693 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-17 12:00:04,329 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-17 18:00:07,760 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-18 07:00:05,133 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-18 09:00:04,821 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-18 12:00:04,219 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-18 18:00:04,679 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-19 07:00:04,138 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-19 09:00:04,259 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-19 12:00:04,373 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-19 18:00:04,137 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-20 07:00:04,348 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-20 09:00:04,402 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-20 12:00:05,123 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-20 18:00:04,792 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-21 07:00:04,400 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-07-21 07:00:06,887 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-07-21 07:00:06,889 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-07-21 09:00:03,699 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-21 12:00:04,278 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-07-21 12:00:06,583 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-07-21 12:00:06,584 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-07-21 18:00:06,594 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-07-21 18:00:08,928 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-07-21 18:00:08,929 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-07-22 07:00:04,530 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-22 09:00:04,340 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-22 12:00:04,858 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-22 18:00:04,460 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-23 07:00:02,159 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x700bba903cb0>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)")': /token
+2025-07-23 07:00:02,161 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x700bb83e67b0>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)")': /token
+2025-07-23 07:00:02,164 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x700bb83e6960>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)")': /token
+2025-07-23 07:00:02,167 - ERROR - Ocorreu um erro ao obter os dados da planilha: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x700bb83e6b10>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x700bb83e6b10>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 875, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 875, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 875, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x700bb83e6b10>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/auth/transport/requests.py", line 187, in __call__
+    response = self.session.request(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x700bb83e6b10>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/suporte/escalaPGD/utils/exportaCSV.py", line 45, in get_sheet_data_as_dataframe
+    spreadsheet = gc.open_by_key(spreadsheet_id)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/gspread/client.py", line 168, in open_by_key
+    spreadsheet = Spreadsheet(self.http_client, {"id": key})
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/gspread/spreadsheet.py", line 29, in __init__
+    metadata = self.fetch_sheet_metadata()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/gspread/spreadsheet.py", line 230, in fetch_sheet_metadata
+    return self.client.fetch_sheet_metadata(self.id, params=params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/gspread/http_client.py", line 305, in fetch_sheet_metadata
+    r = self.request("get", url, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/gspread/http_client.py", line 114, in request
+    response = self.session.request(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/auth/transport/requests.py", line 535, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/auth/credentials.py", line 239, in before_request
+    self._blocking_refresh(request)
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/auth/credentials.py", line 202, in _blocking_refresh
+    self.refresh(request)
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/oauth2/service_account.py", line 448, in refresh
+    access_token, expiry, _ = _client.jwt_grant(
+                              ^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/oauth2/_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/oauth2/_client.py", line 259, in _token_endpoint_request
+    response_status_ok, response_data, retryable_error = _token_endpoint_request_no_throw(
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/oauth2/_client.py", line 192, in _token_endpoint_request_no_throw
+    response = request(
+               ^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/auth/transport/requests.py", line 194, in __call__
+    raise new_exc from caught_exc
+google.auth.exceptions.TransportError: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x700bb83e6b10>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)"))
+2025-07-23 07:00:02,331 - ERROR - Não foi possível obter os dados da planilha. Verifique as mensagens de erro acima.
+2025-07-23 09:00:02,393 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x731f9b2ea3f0>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)")': /token
+2025-07-23 09:00:02,395 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x731f9b2ea510>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)")': /token
+2025-07-23 09:00:02,398 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x731f9b2ea6c0>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)")': /token
+2025-07-23 09:00:02,401 - ERROR - Ocorreu um erro ao obter os dados da planilha: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x731f9b2ea870>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x731f9b2ea870>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 875, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 875, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 875, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x731f9b2ea870>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/auth/transport/requests.py", line 187, in __call__
+    response = self.session.request(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x731f9b2ea870>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/suporte/escalaPGD/utils/exportaCSV.py", line 45, in get_sheet_data_as_dataframe
+    spreadsheet = gc.open_by_key(spreadsheet_id)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/gspread/client.py", line 168, in open_by_key
+    spreadsheet = Spreadsheet(self.http_client, {"id": key})
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/gspread/spreadsheet.py", line 29, in __init__
+    metadata = self.fetch_sheet_metadata()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/gspread/spreadsheet.py", line 230, in fetch_sheet_metadata
+    return self.client.fetch_sheet_metadata(self.id, params=params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/gspread/http_client.py", line 305, in fetch_sheet_metadata
+    r = self.request("get", url, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/gspread/http_client.py", line 114, in request
+    response = self.session.request(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/auth/transport/requests.py", line 535, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/auth/credentials.py", line 239, in before_request
+    self._blocking_refresh(request)
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/auth/credentials.py", line 202, in _blocking_refresh
+    self.refresh(request)
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/oauth2/service_account.py", line 448, in refresh
+    access_token, expiry, _ = _client.jwt_grant(
+                              ^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/oauth2/_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/oauth2/_client.py", line 259, in _token_endpoint_request
+    response_status_ok, response_data, retryable_error = _token_endpoint_request_no_throw(
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/oauth2/_client.py", line 192, in _token_endpoint_request_no_throw
+    response = request(
+               ^^^^^^^^
+  File "/home/suporte/.local/lib/python3.12/site-packages/google/auth/transport/requests.py", line 194, in __call__
+    raise new_exc from caught_exc
+google.auth.exceptions.TransportError: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x731f9b2ea870>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)"))
+2025-07-23 09:00:02,407 - ERROR - Não foi possível obter os dados da planilha. Verifique as mensagens de erro acima.
+2025-07-23 12:00:06,316 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-23 18:00:04,274 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-24 07:00:04,852 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-24 09:00:04,008 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-24 12:00:04,642 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-24 18:00:04,365 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-25 07:00:04,692 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-25 09:00:05,062 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-25 12:00:04,310 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-25 18:00:04,899 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-26 07:00:04,383 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-26 09:00:07,452 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-26 12:00:03,809 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-26 18:00:04,354 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-27 07:00:04,089 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-27 09:00:04,159 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-27 12:00:04,530 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-27 18:00:04,080 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-28 07:00:04,642 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-28 09:00:05,049 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-28 12:00:04,927 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-28 18:00:05,529 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-29 07:00:03,892 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-29 09:00:04,209 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-29 12:00:04,422 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-29 18:00:04,480 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-30 07:00:04,335 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-30 09:00:06,451 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-30 12:00:04,032 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-30 18:00:05,004 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-31 07:00:04,606 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-31 09:00:04,908 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-31 12:00:04,454 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-07-31 18:00:04,285 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-01 07:00:05,322 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-01 09:00:04,369 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-01 12:00:05,496 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-01 18:00:04,285 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-02 07:00:04,710 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-02 09:00:04,495 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-02 12:00:03,786 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-02 18:00:04,359 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-03 07:00:04,234 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-03 09:00:04,211 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-03 12:00:04,744 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-03 18:00:04,303 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-04 07:00:03,843 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-08-04 07:00:06,734 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-08-04 07:00:06,735 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-08-04 09:00:04,808 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-04 12:00:04,373 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-08-04 12:00:06,683 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-08-04 12:00:06,684 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-08-04 18:00:04,337 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-05 07:00:03,818 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-05 09:00:03,693 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-05 12:00:04,012 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-05 18:00:04,553 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-06 07:00:07,001 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-06 09:00:04,531 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-06 12:00:04,882 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-06 18:00:04,963 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-07 07:00:05,949 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-07 09:00:04,209 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-07 12:00:05,008 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-07 18:00:05,071 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-08 07:00:04,475 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-08 09:00:04,866 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-08 12:00:04,618 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-08 18:00:04,937 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-09 07:00:04,620 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-09 09:00:04,792 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-09 12:00:04,374 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-09 18:00:04,303 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-10 07:00:04,886 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-10 09:00:04,061 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-10 12:00:05,092 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-10 18:00:05,624 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-11 07:00:04,788 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-11 09:00:04,733 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-11 12:00:04,861 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-11 18:00:04,661 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-08-11 18:00:07,305 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-08-11 18:00:07,307 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-08-12 07:00:04,588 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-08-12 07:00:07,146 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-08-12 07:00:07,147 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-08-12 09:00:04,359 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-12 12:00:04,191 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-08-12 12:00:06,634 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-08-12 12:00:06,635 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-08-12 18:00:04,336 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-13 07:00:04,650 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-13 09:00:05,449 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-13 12:00:04,453 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado. 
+
+2025-08-13 18:00:04,207 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-08-13 18:00:06,535 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-08-13 18:00:06,537 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-08-14 07:00:04,315 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
+2025-08-14 09:00:04,550 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-08-14 09:00:06,787 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-08-14 09:00:06,788 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
