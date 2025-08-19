@@ -708,3 +708,47 @@ Traceback (most recent call last):
                                  ^^^^^^^^^^^^^^^^
 NameError: name 'spreadsheet_idsd' is not defined. Did you mean: 'spreadsheet_id'?
 2025-08-14 15:45:41,633 - ERROR - Não foi possível obter os dados da planilha. Verifique as mensagens de erro acima.
+2025-08-14 18:00:05,228 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
+2025-08-15 07:00:03,928 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-08-15 07:00:06,041 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-08-15 07:00:06,042 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-08-15 09:00:04,353 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
+2025-08-15 12:00:04,274 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
+2025-08-15 18:00:04,909 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-08-15 18:00:07,182 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-08-15 18:00:07,183 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-08-16 07:00:04,640 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
+2025-08-16 09:00:03,797 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
+2025-08-16 12:00:04,505 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
+2025-08-16 18:00:04,166 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
+2025-08-17 07:00:03,925 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
+2025-08-17 09:00:04,783 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
+2025-08-17 12:00:04,166 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
+2025-08-17 18:00:04,129 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
+2025-08-18 07:00:03,704 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-08-18 07:00:06,121 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-08-18 07:00:06,122 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-08-18 09:00:04,487 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-08-18 09:00:06,811 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-08-18 09:00:06,812 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-08-18 12:00:04,320 - INFO - Alterações detectadas entre a planilha atual e o arquivo CSV existente. 
+
+2025-08-18 12:00:06,821 - INFO - Arquivo 'utils/planilha_exportada.csv' atualizado com sucesso no GitHub! 
+
+2025-08-18 12:00:06,822 - INFO - Planilha exportada com sucesso para 'planilha_exportada.csv' 
+
+2025-08-18 18:00:04,862 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
+2025-08-19 07:00:04,544 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
+2025-08-19 09:00:04,014 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.

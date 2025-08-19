@@ -10,11 +10,12 @@ import logging
 from datetime import datetime
 import Send_to_GoogleChat
 
-# Configuração do logging
-logging.basicConfig(filename='/home/suporte/escalaPGD/utils/logs.txt', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
-CREDENTIALS_FILE = '/home/suporte/escalaPGD/utils/service_account.json'
+BASE_DIR = os.path.abspath(os.pardir)
+CREDENTIALS_FILE = BASE_DIR+'/utils/service_account.json'
 OUTPUT_CSV_FILENAME = 'planilha_exportada.csv'
+
+# Configuração do logging
+logging.basicConfig(filename=BASE_DIR+'/utils/logs.txt', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # --- Configurações do GitHub ---
 load_dotenv()
