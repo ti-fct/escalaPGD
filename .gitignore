@@ -1,2 +1,30 @@
-service_account.json
+
+# Byte-compiled / optimized / compiled files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+
+# Distribution / build files
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Sensitive information
 .env
+service_account.json

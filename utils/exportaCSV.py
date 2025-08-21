@@ -2,24 +2,23 @@
 #pip.main(["install", "gspread", "pandas", "python-dotenv", "PyGithub"])
 
 import pandas as pd
-from dotenv import load_dotenv
-from github import Github, GithubException
 import gspread
 import os
 import logging
-from datetime import datetime
 import Send_to_GoogleChat
+import Send_to_Github
 
-BASE_DIR = os.path.abspath(os.pardir)
-CREDENTIALS_FILE = BASE_DIR+'/utils/service_account.json'
+# --- Configurações ---
+BASE_DIR = os.path.dirname(os.path.realpath(__file__))
+CREDENTIALS_FILE = BASE_DIR+'/service_account.json'
 OUTPUT_CSV_FILENAME = 'planilha_exportada.csv'
+SPREADSHEET_ID = '17AhmFnhjVGqSyCqa-BDu7Mk4JyvS21H0FCNuH5RhpYc'
+WORKSHEET_NAME = 'APOIO TÉCNICO'
 
 # Configuração do logging
-logging.basicConfig(filename=BASE_DIR+'/utils/logs.txt', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename=BASE_DIR+'/logs.txt', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # --- Configurações do GitHub ---
-load_dotenv()
-GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 GITHUB_OWNER = 'ti-fct'
 GITHUB_REPO_NAME = 'escalaPGD'
 GITHUB_BRANCH = 'main'
@@ -39,9 +38,6 @@ except Exception as e:
     " foi adicionado como editor na planilha do Google Sheets."
     enviar_mensagem_erro(mensagem_erro)
     exit()
-
-SPREADSHEET_ID = '17AhmFnhjVGqSyCqa-BDu7Mk4JyvS21H0FCNuH5RhpYc'
-WORKSHEET_NAME = 'APOIO TÉCNICO'
 
 def get_sheet_data_as_dataframe(spreadsheet_id, worksheet_name):
     try:
@@ -70,58 +66,13 @@ def get_sheet_data_as_dataframe(spreadsheet_id, worksheet_name):
         enviar_mensagem_erro(f"Ocorreu um erro ao obter os dados da planilha: {e}")
         return None
 
-def upload_to_github(file_path, owner, repo_name, branch, github_file_path):
-
-    if not GITHUB_TOKEN:
-        enviar_mensagem_erro("Erro: GITHUB_TOKEN não encontrado nas variáveis de ambiente.")
-        return False
-
-    g = Github(GITHUB_TOKEN)
-    
-    try:
-        repo = g.get_repo(f"{owner}/{repo_name}")
-    except GithubException as e:
-        enviar_mensagem_erro(f"Erro ao acessar o repositório '{owner}/{repo_name}': {e}")
-        return False
-    except Exception as e:
-        enviar_mensagem_erro(f"Erro inesperado ao obter repositório: {e}")
-        return False
-
-    # Verifica se o arquivo existe antes de tentar lê-lo
-    if not os.path.exists(file_path):
-        enviar_mensagem_erro(f"Erro: Arquivo '{file_path}' não encontrado.")
-        return False
-
-    with open(file_path, 'rb') as f:
-        content = f.read()
-
-    commit_message = f"Atualizado {github_file_path} via script Python"
-
-    try:
-        # Tenta obter o arquivo para verificar se existe e pegar o SHA
-        file_in_github = repo.get_contents(github_file_path, ref=branch)
-        repo.update_file(file_in_github.path, commit_message, content, file_in_github.sha, branch=branch)
-        mensagem_info = f"Arquivo '{github_file_path}' atualizado com sucesso no GitHub! \n"
-        print(mensagem_info)
-        logging.info(mensagem_info)
-    except GithubException as e:
-        if e.status == 404:
-            repo.create_file(github_file_path, commit_message, content, branch=branch)
-            print(f"Arquivo '{github_file_path}' criado com sucesso no GitHub!")
-        else:
-            enviar_mensagem_erro(f"Erro do GitHub ao enviar arquivo: {e.status} - {e.data}")
-            return False
-    except Exception as e:
-        enviar_mensagem_erro(f"Erro inesperado ao enviar arquivo para o GitHub: {e}")
-        return False
-    return True
 
 def compare_and_download_csv(output_filename, new_dataframe):
     if not os.path.exists(output_filename):
         print(f"Arquivo '{output_filename}' não encontrado. Realizando o download inicial.")
         new_dataframe.to_csv(output_filename, index=False, encoding='utf-8')
         print(f"Planilha exportada com sucesso para '{output_filename}'")
-        upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
+        Send_to_Github.upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
         return True
     
     try:
@@ -132,7 +83,7 @@ def compare_and_download_csv(output_filename, new_dataframe):
         enviar_mensagem_erro(f"Erro ao ler o arquivo CSV existente '{output_filename}': {e}")
         new_dataframe.to_csv(output_filename, index=False, encoding='utf-8')
         enviar_mensagem_erro(f"Planilha exportada com sucesso para '{output_filename}'")
-        upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
+        Send_to_Github.upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
         return True
 
     # Compara os DataFrames
@@ -142,15 +93,15 @@ def compare_and_download_csv(output_filename, new_dataframe):
         logging.info(mensagem_info)
         return False
     else:
-        mensagem_info = "Alterações detectadas entre a planilha atual e o arquivo CSV existente. \n"
+        mensagem_info = "Alterações detectadas entre a planilha atual e o arquivo CSV existente."
         print(mensagem_info)
         logging.info(mensagem_info)
 
         new_dataframe.to_csv(output_filename, index=False, encoding='utf-8')
-        upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
+        Send_to_Github.upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
         
         print(f"Planilha exportada com sucesso para '{output_filename}'")
-        logging.info(f"Planilha exportada com sucesso para '{output_filename}' \n")
+        logging.info(f"Planilha exportada com sucesso para '{output_filename}'")
         
         return True
 
