@@ -1,47 +1,43 @@
+#import pip
+#pip.main(["install", "gspread", "pandas", "python-dotenv", "PyGithub"])
+
 import pandas as pd
 import gspread
 import os
 import logging
-import requests
+import Send_to_GoogleChat
+import Send_to_Github
 
 # --- Configurações ---
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
-CREDENTIALS_FILE = os.path.join(BASE_DIR, 'service_account.json')
-OUTPUT_CSV_FILENAME = os.path.join(BASE_DIR, 'planilha_exportada.csv')
+CREDENTIALS_FILE = BASE_DIR+'/service_account.json'
+OUTPUT_CSV_FILENAME = 'planilha_exportada.csv'
 SPREADSHEET_ID = '17AhmFnhjVGqSyCqa-BDu7Mk4JyvS21H0FCNuH5RhpYc'
 WORKSHEET_NAME = 'APOIO TÉCNICO'
 
 # Configuração do logging
-logging.basicConfig(filename=os.path.join(BASE_DIR, 'logs.txt'), level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename=BASE_DIR+'/logs.txt', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# --- Configuração do Google Chat ---
-URL_CHAT = os.environ.get('URL_CHAT')
-
-def enviar_mensagem_google_chat(mensagem):
-    if not URL_CHAT:
-        print("URL_CHAT não configurada. Não é possível enviar mensagem.")
-        logging.warning("URL_CHAT não configurada.")
-        return
-    try:
-        json_payload = {'text': mensagem}
-        requests.post(url=URL_CHAT, json=json_payload)
-    except Exception as e:
-        print(f"Erro ao enviar mensagem para o Google Chat: {e}")
-        logging.error(f"Erro ao enviar mensagem para o Google Chat: {e}", exc_info=True)
-
+# --- Configurações do GitHub ---
+GITHUB_OWNER = 'ti-fct'
+GITHUB_REPO_NAME = 'escalaPGD'
+GITHUB_BRANCH = 'main'
+GITHUB_FILE_PATH = 'utils/'+OUTPUT_CSV_FILENAME
 
 def enviar_mensagem_erro(mensagem):
     print(mensagem) 
-    logging.error(mensagem, exc_info=True)
-    enviar_mensagem_google_chat(mensagem)
+    logging.error(mensagem+'\n', exc_info=True)
+    Send_to_GoogleChat.alert_erro(mensagem)
 
 try:
     gc = gspread.service_account(filename=CREDENTIALS_FILE)
 except Exception as e:
-    mensagem_erro = (f"Erro ao carregar as credenciais do Google Sheets: {e}\n"
-                     "Verifique se o segredo SERVICE_ACCOUNT_JSON está configurado corretamente no GitHub Actions.")
+    mensagem_erro = f"Erro ao carregar as credenciais do Google Sheets: {e} \n"
+    " Certifique-se de que o arquivo de credenciais está correto e no local especificado. \n"
+    " Se estiver usando uma conta de serviço, verifique se o e-mail da conta de serviço \n"
+    " foi adicionado como editor na planilha do Google Sheets."
     enviar_mensagem_erro(mensagem_erro)
-    exit(1)
+    exit()
 
 def get_sheet_data_as_dataframe(spreadsheet_id, worksheet_name):
     try:
@@ -51,43 +47,43 @@ def get_sheet_data_as_dataframe(spreadsheet_id, worksheet_name):
         
         if not data:
             print(f"A aba '{worksheet_name}' está vazia.")
-            return pd.DataFrame()
-
-        # Usar apenas as 9 primeiras colunas (A até I)
-        data_limitada = [row[:9] for row in data]
+            return pd.DataFrame() # Retorna um DataFrame vazio
         
-        df = pd.DataFrame(data_limitada[1:], columns=data_limitada[0])
+        # A primeira linha é o cabeçalho
+        df = pd.DataFrame(data[1:], columns=data[0])
+        # Converte NaN para string vazia em todo o DataFrame
         df = df.fillna('')
+        df.drop(columns=['Unnamed: 7'], inplace=True, errors='ignore')  # Remove a coluna H se existir
         return df
     except gspread.exceptions.SpreadsheetNotFound:
         mensagem_erro = f"Erro: Planilha com o ID '{spreadsheet_id}' não encontrada ou você não tem acesso."
         enviar_mensagem_erro(mensagem_erro)
         return None
     except gspread.exceptions.WorksheetNotFound:
-        mensagem_erro = f"Erro: Aba com o nome '{worksheet_name}' não encontrada na planilha."
-        enviar_mensagem_erro(mensagem_erro)
+        enviar_mensagem_erro(f"Erro: Aba com o nome '{worksheet_name}' não encontrada na planilha.")
         return None
     except Exception as e:
-        mensagem_erro = f"Ocorreu um erro ao obter os dados da planilha: {e}"
-        enviar_mensagem_erro(mensagem_erro)
+        enviar_mensagem_erro(f"Ocorreu um erro ao obter os dados da planilha: {e}")
         return None
 
 
-def compare_and_save_csv(output_filename, new_dataframe):
+def compare_and_download_csv(output_filename, new_dataframe):
     if not os.path.exists(output_filename):
-        print(f"Arquivo '{output_filename}' não encontrado. Criando arquivo inicial.")
+        print(f"Arquivo '{output_filename}' não encontrado. Realizando o download inicial.")
         new_dataframe.to_csv(output_filename, index=False, encoding='utf-8')
         print(f"Planilha exportada com sucesso para '{output_filename}'")
+        Send_to_Github.upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
         return True
     
     try:
-        # Ler apenas as 9 primeiras colunas do arquivo existente
-        existing_df = pd.read_csv(output_filename, encoding='utf-8', usecols=range(9))
-        existing_df = existing_df.fillna('')
+        existing_df = pd.read_csv(output_filename, encoding='utf-8')
+        existing_df = existing_df.fillna('')  # Converte NaN para string vazia
+        existing_df.drop(columns=['Unnamed: 7'], inplace=True, errors='ignore')  # Remove a coluna H se existir
     except Exception as e:
-        mensagem_erro = f"Erro ao ler o arquivo CSV existente '{output_filename}': {e}. Sobrescrevendo o arquivo."
-        enviar_mensagem_erro(mensagem_erro)
+        enviar_mensagem_erro(f"Erro ao ler o arquivo CSV existente '{output_filename}': {e}")
         new_dataframe.to_csv(output_filename, index=False, encoding='utf-8')
+        enviar_mensagem_erro(f"Planilha exportada com sucesso para '{output_filename}'")
+        Send_to_Github.upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
         return True
 
     # Compara os DataFrames
@@ -97,22 +93,26 @@ def compare_and_save_csv(output_filename, new_dataframe):
         logging.info(mensagem_info)
         return False
     else:
-        mensagem_info = "Alterações detectadas. Atualizando o arquivo CSV."
+        mensagem_info = "Alterações detectadas entre a planilha atual e o arquivo CSV existente."
         print(mensagem_info)
         logging.info(mensagem_info)
+
         new_dataframe.to_csv(output_filename, index=False, encoding='utf-8')
+        Send_to_Github.upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
+        
         print(f"Planilha exportada com sucesso para '{output_filename}'")
         logging.info(f"Planilha exportada com sucesso para '{output_filename}'")
+        
         return True
 
 
-# --- Lógica principal ---
+# Lógica principal ---
 print("Obtendo dados da planilha do Google Sheets...")
 new_df = get_sheet_data_as_dataframe(SPREADSHEET_ID, WORKSHEET_NAME)
 
 if new_df is not None:
     if not new_df.empty:
-        compare_and_save_csv(OUTPUT_CSV_FILENAME, new_df)
+        compare_and_download_csv(OUTPUT_CSV_FILENAME, new_df)
     else:
         mensagem_info = "Os dados da planilha estão vazios. Nenhum CSV será gerado ou atualizado."
         print(mensagem_info)

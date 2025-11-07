@@ -35,6 +35,7 @@ function processCSV(csvText) {
     
     let currentWeek = 0;
     let passedHeader = false;
+    let headerRow = [];
     
     for (let i = 0; i < result.data.length; i++) {
         const row = result.data[i];
@@ -43,8 +44,13 @@ function processCSV(csvText) {
         if (row[0] && row[0].includes("SEMANA 1")) {
             currentWeek = 1;
             passedHeader = false;
-            if (row.length > 2) {
-                week1Dates = row.slice(2, 9).filter(item => item && item.trim() !== ""); // Limita a 7 dias
+            if (row.length > 2 && row[2]) {
+                week1Dates = row.slice(2).filter(item => item && item.trim() !== "");
+            } else if (i + 1 < result.data.length) {
+                const nextRow = result.data[i + 1];
+                if (nextRow.length > 2) {
+                    week1Dates = nextRow.slice(2).filter(item => item && item.trim() !== "");
+                }
             }
             continue;
         }
@@ -53,8 +59,26 @@ function processCSV(csvText) {
         if (row[0] && row[0].includes("SEMANA 2")) {
             currentWeek = 2;
             passedHeader = false;
+            let foundDates = false;
             if (row.length > 2) {
-                week2Dates = row.slice(2, 9).filter(item => item && item.trim() !== ""); // Limita a 7 dias
+                const potentialDates = row.slice(2).filter(item => item && item.trim() !== "");
+                if (potentialDates.some(item => /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(item))) {
+                    week2Dates = potentialDates;
+                    foundDates = true;
+                }
+            }
+            
+            if (!foundDates) {
+                for (let j = i + 1; j < Math.min(i + 5, result.data.length); j++) {
+                    const searchRow = result.data[j];
+                    if (searchRow && searchRow.length > 2) {
+                        const potentialDates = searchRow.slice(2).filter(item => item && item.trim() !== "");
+                        if (potentialDates.some(item => /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(item))) {
+                            week2Dates = potentialDates;
+                            break;
+                        }
+                    }
+                }
             }
             continue;
         }
@@ -62,6 +86,7 @@ function processCSV(csvText) {
         // Pular linha de cabeçalho de cada semana
         if (row[0] === "Técnico") {
             passedHeader = true;
+            headerRow = row;
             continue;
         }
         
@@ -84,9 +109,7 @@ function processCSV(csvText) {
                 terca: row[3],
                 quarta: row[4],
                 quinta: row[5],
-                sexta: row[6],
-                sabado: row[7],
-                domingo: row[8]
+                sexta: row[6]
             });
         } else if (currentWeek === 2 && passedHeader) {
             week2Data.push({
@@ -96,12 +119,15 @@ function processCSV(csvText) {
                 terca: row[3],
                 quarta: row[4],
                 quinta: row[5],
-                sexta: row[6],
-                sabado: row[7],
-                domingo: row[8]
+                sexta: row[6]
             });
         }
     }
+    
+    console.log("Week 1 Data:", week1Data);
+    console.log("Week 2 Data:", week2Data);
+    console.log("Week 1 Dates:", week1Dates);
+    console.log("Week 2 Dates:", week2Dates);
     
     return {
         week1: week1Data,
@@ -161,8 +187,6 @@ function fillTable(weekData, tableId) {
                 ${getStatusCell(row.quarta)}
                 ${getStatusCell(row.quinta)}
                 ${getStatusCell(row.sexta)}
-                ${getStatusCell(row.sabado)}
-                ${getStatusCell(row.domingo)}
             </tr>
         `;
         tableBody.innerHTML += rowHtml;
@@ -171,19 +195,19 @@ function fillTable(weekData, tableId) {
 
 // Função para atualizar os cabeçalhos das tabelas com as datas do CSV
 function updateTableHeaders(weekDates, weekNumber) {
-    const dias = ["segunda", "terca", "quarta", "quinta", "sexta", "sabado", "domingo"];
+    const dias = ["segunda", "terca", "quarta", "quinta", "sexta"];
     
-    if (weekDates && weekDates.length > 0) {
+    if (weekDates && weekDates.length >= 5) {
         const firstDate = weekDates[0];
         const lastDate = weekDates[weekDates.length - 1];
         document.getElementById(`week${weekNumber}-dates`).textContent = `${firstDate} - ${lastDate}`;
         
         for (let i = 0; i < Math.min(dias.length, weekDates.length); i++) {
             const dia = dias[i];
-            const header = document.querySelector(`#week${weekNumber}Table th:nth-child(${i + 3})`);
+            const header = document.getElementById(`week${weekNumber}-${dia}`);
             if (header) {
-                const diaNome = header.textContent; // Mantém o nome original (Segunda, Terça...)
-                header.innerHTML = `${diaNome} <br> <span class="fs-6 fw-normal">(${weekDates[i]})</span>`;
+                const diaNome = dia.charAt(0).toUpperCase() + dia.slice(1);
+                header.textContent = `${diaNome} (${weekDates[i]})`;
             }
         }
     } else {
