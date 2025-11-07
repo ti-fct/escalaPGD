@@ -27,7 +27,7 @@ jobs:
         pip install -r utils/requirements.txt
 
     - name: Criar arquivo de credenciais
-      run: echo '${{ secrets.SERVICE_ACCOUNT_JSON }}' > utils/service_account.json
+      run: echo "${{ secrets.SERVICE_ACCOUNT_JSON }}" > utils/service_account.json
       
     - name: Executar script para exportar CSV
       run: python utils/exportaCSV.py
