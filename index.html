@@ -1,4 +1,6 @@
-<html lang="pt-BR"><head>
+<html lang="pt-BR">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="language" content="pt-BR">
@@ -12,36 +14,44 @@
     <meta property="og:description" content="Faculdade de Ciência e Tecnologia - UFG">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap5.min.css"
+        rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="https://files.cercomp.ufg.br/weby/up/1/o/favicon.png?1403268073">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://files.cercomp.ufg.br/weby/up/1/o/favicon.png?1403268073">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>📅Escala PGD - Apoio Técnico</title>
-    
+
 </head>
+
 <body>
     <div class="container">
 
         <div class="container navbar">
             <h3 class="mb-4"><i class="bi bi-calendar3"></i>&nbsp;Escala PGD - Apoio Técnico</h3>
             <div class="flexrow">
-                    <img alt="LOGO FCT" style="width:95px; height:70px;" src="https://files.cercomp.ufg.br/weby/up/765/o/FCT_UFG.svg?1582742792">
-                    <img alt="Logo da UFG" style="width: 122px; height:80px;" src="https://files.cercomp.ufg.br/weby/assets/level2/marca-ufg-677b562915f50ba83e8e1516f068bde65a0e00330471068ad6320189ac9f140a.svg">
-                    <h4 id="current-date"></h4>
+                <img alt="LOGO FCT" style="width:95px; height:70px;"
+                    src="https://files.cercomp.ufg.br/weby/up/765/o/FCT_UFG.svg?1582742792">
+                <img alt="Logo da UFG" style="width: 122px; height:80px;"
+                    src="https://files.cercomp.ufg.br/weby/assets/level2/marca-ufg-677b562915f50ba83e8e1516f068bde65a0e00330471068ad6320189ac9f140a.svg">
+                <h4 id="current-date"></h4>
             </div>
         </div>
 
-            <!-- Abas da semana -->
+        <!-- Abas da semana -->
         <ul class="nav nav-tabs week-tabs" id="weekTabs" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="week1-tab" data-bs-toggle="tab" data-bs-target="#week1" type="button" role="tab" aria-controls="week1" aria-selected="true">
+                <button class="nav-link active" id="week1-tab" data-bs-toggle="tab" data-bs-target="#week1"
+                    type="button" role="tab" aria-controls="week1" aria-selected="true">
                     Semana 1 (<span id="week1-dates"></span>)
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="week2-tab" data-bs-toggle="tab" data-bs-target="#week2" type="button" role="tab" aria-controls="week2" aria-selected="false">
+                <button class="nav-link" id="week2-tab" data-bs-toggle="tab" data-bs-target="#week2" type="button"
+                    role="tab" aria-controls="week2" aria-selected="false">
                     Semana 2 (<span id="week2-dates"></span>)
                 </button>
             </li>
@@ -61,6 +71,8 @@
                                 <th>Quarta</th>
                                 <th>Quinta</th>
                                 <th>Sexta</th>
+                                <th>Sábado</th>
+                                <th>Domingo</th>
                             </tr>
                         </thead>
                         <tbody id="week1Body">
@@ -83,6 +95,8 @@
                                 <th>Quarta</th>
                                 <th>Quinta</th>
                                 <th>Sexta</th>
+                                <th>Sábado</th>
+                                <th>Domingo</th>
                             </tr>
                         </thead>
                         <tbody id="week2Body">
@@ -91,9 +105,9 @@
                     </table>
                 </div>
             </div>
-            </div>
-            </div>
         </div>
+    </div>
+    </div>
     </div>
 
     <!-- jQuery -->
@@ -107,4 +121,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>
