@@ -3,7 +3,6 @@ import gspread
 import os
 import logging
 import requests
-import json
 
 # --- Configurações ---
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
