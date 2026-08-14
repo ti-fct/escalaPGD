@@ -104,22 +104,29 @@ function processCSV(csvText) {
         if (currentWeek === 1 && passedHeader) {
             week1Data.push({
                 tecnico: row[0],
-                modalidade: row[1],
-                segunda: row[2],
-                terca: row[3],
-                quarta: row[4],
-                quinta: row[5],
-                sexta: row[6]
+                salas: row[1],
+                curso: row[2],
+                segunda: row[3],
+                terca: row[4],
+                quarta: row[5],
+                quinta: row[6],
+                sexta: row[7],
+                sabado: row[8],
+                domingo: row[9]
+                
             });
         } else if (currentWeek === 2 && passedHeader) {
             week2Data.push({
                 tecnico: row[0],
-                modalidade: row[1],
-                segunda: row[2],
-                terca: row[3],
-                quarta: row[4],
-                quinta: row[5],
-                sexta: row[6]
+                salas: row[1],
+                curso: row[2],
+                segunda: row[3],
+                terca: row[4],
+                quarta: row[5],
+                quinta: row[6],
+                sexta: row[7],
+                sabado: row[8],
+                domingo: row[9]
             });
         }
     }
@@ -181,12 +188,15 @@ function fillTable(weekData, tableId) {
         let rowHtml = `
             <tr>
                 <td>${row.tecnico}</td>
-                <td>${row.modalidade}</td>
+                <td>${row.salas}</td>
+                <td>${row.curso}</td>
                 ${getStatusCell(row.segunda)}
                 ${getStatusCell(row.terca)}
                 ${getStatusCell(row.quarta)}
                 ${getStatusCell(row.quinta)}
                 ${getStatusCell(row.sexta)}
+                ${getStatusCell(row.sabado)}
+                ${getStatusCell(row.domingo)}
             </tr>
         `;
         tableBody.innerHTML += rowHtml;
@@ -195,7 +205,7 @@ function fillTable(weekData, tableId) {
 
 // Função para atualizar os cabeçalhos das tabelas com as datas do CSV
 function updateTableHeaders(weekDates, weekNumber) {
-    const dias = ["segunda", "terca", "quarta", "quinta", "sexta"];
+    const dias = ["segunda", "terca", "quarta", "quinta", "sexta", "sabado", "domingo"];
     
     if (weekDates && weekDates.length >= 5) {
         const firstDate = weekDates[0];
@@ -308,7 +318,9 @@ async function highlightCurrentDate() {
             2: 1, // Terça
             3: 2, // Quarta
             4: 3, // Quinta
-            5: 4  // Sexta
+            5: 4,  // Sexta
+            6: 5, // Sabado
+            7: 6  // Domingo
         };
         
         dayIndex = dayMapping[dayOfWeek];
