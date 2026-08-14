@@ -44,7 +44,7 @@ function processCSV(csvText) {
         if (row[0] && row[0].includes("SEMANA 1")) {
             currentWeek = 1;
             passedHeader = false;
-            if (row.length > 2 && row[2]) {
+            if (row.length > 2 && row[3]) {
                 week1Dates = row.slice(2).filter(item => item && item.trim() !== "");
             } else if (i + 1 < result.data.length) {
                 const nextRow = result.data[i + 1];
