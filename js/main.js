@@ -170,6 +170,9 @@ function getStatusCell(status) {
         case 'PARALISAÇÃO':
             bgClass = 'bg-paralisacao';
             break;
+        case 'COMPENSAÇÃO PACTUADA':
+            bgClass = 'bg-compensacao_pactuada';
+            break;
         default:
             bgClass = '';
     }

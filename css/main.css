@@ -84,6 +84,11 @@ body {
     color: #5a3286 !important;
 }
 
+.bg-compensacao_pactuada {
+    background-color: #e6cff2 !important;
+    color: #5a3286 !important;
+}
+
 .tab-content {
     background-color: white;
     border-radius: 5px;
