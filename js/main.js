@@ -1,3 +1,54 @@
+// Estrutura das colunas do CSV (aba "APOIO TÉCNICO" da planilha):
+// A: Técnico | B: Sala(s) FCT | C: Curso | D-H: Segunda a Sexta | I-J: Sábado/Domingo (ignorados)
+const COL = {
+    TECNICO: 0,
+    SALAS: 1,
+    CURSO: 2,
+    SEGUNDA: 3,
+    TERCA: 4,
+    QUARTA: 5,
+    QUINTA: 6,
+    SEXTA: 7
+};
+// Quantidade de colunas antes dos dias da semana (Técnico, Salas, Curso)
+const FIXED_COLUMNS = 3;
+const DATE_REGEX = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
+
+// Retorna apenas as células da linha que são datas (dd/mm/aaaa).
+// Ignora colunas auxiliares da planilha (ex.: "23/11/26 ~ 06/12/26", "D4:J16").
+function extractDates(row) {
+    if (!row) return [];
+    return row
+        .map(cell => (cell || '').trim())
+        .filter(cell => DATE_REGEX.test(cell));
+}
+
+// Procura as datas da semana na linha do título ou nas linhas seguintes
+function findWeekDates(rows, startIndex) {
+    const limit = Math.min(startIndex + 5, rows.length);
+    for (let j = startIndex; j < limit; j++) {
+        const dates = extractDates(rows[j]);
+        if (dates.length >= 5) {
+            return dates;
+        }
+    }
+    return [];
+}
+
+// Converte uma linha do CSV em um objeto de técnico
+function parseRow(row) {
+    return {
+        tecnico: row[COL.TECNICO],
+        salas: row[COL.SALAS],
+        curso: row[COL.CURSO],
+        segunda: row[COL.SEGUNDA],
+        terca: row[COL.TERCA],
+        quarta: row[COL.QUARTA],
+        quinta: row[COL.QUINTA],
+        sexta: row[COL.SEXTA]
+    };
+}
+
 // Função para carregar o arquivo CSV externo
 async function loadCSVFile() {
     try {
@@ -14,7 +65,7 @@ async function loadCSVFile() {
         // Fallback - você pode manter os dados originais como backup
         return `
 Erro ao obtê-lo. Verifique a conexão com a internet ou o caminho do arquivo.
-        Técnico,Modalidade,Segunda,Terca,Quarta,Quinta,Sexta
+        Técnico,Salas,Curso,Segunda,Terca,Quarta,Quinta,Sexta
 `;
     }
 }
@@ -40,45 +91,15 @@ function processCSV(csvText) {
     for (let i = 0; i < result.data.length; i++) {
         const row = result.data[i];
         
-        // Detectar a Semana 1
-        if (row[0] && row[0].includes("SEMANA 1")) {
-            currentWeek = 1;
+        // Detectar o início de cada semana e extrair as datas
+        if (row[0] && (row[0].includes("SEMANA 1") || row[0].includes("SEMANA 2"))) {
+            currentWeek = row[0].includes("SEMANA 1") ? 1 : 2;
             passedHeader = false;
-            if (row.length > 2 && row[2]) {
-                week1Dates = row.slice(2).filter(item => item && item.trim() !== "");
-            } else if (i + 1 < result.data.length) {
-                const nextRow = result.data[i + 1];
-                if (nextRow.length > 2) {
-                    week1Dates = nextRow.slice(2).filter(item => item && item.trim() !== "");
-                }
-            }
-            continue;
-        }
-        
-        // Detectar a Semana 2
-        if (row[0] && row[0].includes("SEMANA 2")) {
-            currentWeek = 2;
-            passedHeader = false;
-            let foundDates = false;
-            if (row.length > 2) {
-                const potentialDates = row.slice(2).filter(item => item && item.trim() !== "");
-                if (potentialDates.some(item => /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(item))) {
-                    week2Dates = potentialDates;
-                    foundDates = true;
-                }
-            }
-            
-            if (!foundDates) {
-                for (let j = i + 1; j < Math.min(i + 5, result.data.length); j++) {
-                    const searchRow = result.data[j];
-                    if (searchRow && searchRow.length > 2) {
-                        const potentialDates = searchRow.slice(2).filter(item => item && item.trim() !== "");
-                        if (potentialDates.some(item => /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(item))) {
-                            week2Dates = potentialDates;
-                            break;
-                        }
-                    }
-                }
+            const dates = findWeekDates(result.data, i);
+            if (currentWeek === 1) {
+                week1Dates = dates;
+            } else {
+                week2Dates = dates;
             }
             continue;
         }
@@ -102,25 +123,9 @@ function processCSV(csvText) {
         
         // Processar dados das semanas
         if (currentWeek === 1 && passedHeader) {
-            week1Data.push({
-                tecnico: row[0],
-                modalidade: row[1],
-                segunda: row[2],
-                terca: row[3],
-                quarta: row[4],
-                quinta: row[5],
-                sexta: row[6]
-            });
+            week1Data.push(parseRow(row));
         } else if (currentWeek === 2 && passedHeader) {
-            week2Data.push({
-                tecnico: row[0],
-                modalidade: row[1],
-                segunda: row[2],
-                terca: row[3],
-                quarta: row[4],
-                quinta: row[5],
-                sexta: row[6]
-            });
+            week2Data.push(parseRow(row));
         }
     }
     
@@ -180,8 +185,9 @@ function fillTable(weekData, tableId) {
     weekData.forEach(row => {
         let rowHtml = `
             <tr>
-                <td>${row.tecnico}</td>
-                <td>${row.modalidade}</td>
+                <td>${row.tecnico || ''}</td>
+                <td>${row.salas || ''}</td>
+                <td>${row.curso || ''}</td>
                 ${getStatusCell(row.segunda)}
                 ${getStatusCell(row.terca)}
                 ${getStatusCell(row.quarta)}
@@ -323,7 +329,7 @@ async function highlightCurrentDate() {
             tabElement.click();
         }
         
-        const columnIndex = dayIndex + 2;
+        const columnIndex = dayIndex + FIXED_COLUMNS;
         
         const headerSelector = `#week${activeWeek}Table thead th:nth-child(${columnIndex + 1})`;
         const headerElement = document.querySelector(headerSelector);

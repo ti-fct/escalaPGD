@@ -67,6 +67,11 @@ def get_sheet_data_as_dataframe(spreadsheet_id, worksheet_name):
         return None
 
 
+def dataframe_para_matriz(df):
+    """Converte o DataFrame em lista de linhas (cabeçalho incluso), tudo como texto."""
+    return [[str(coluna) for coluna in df.columns]] + df.astype(str).values.tolist()
+
+
 def compare_and_download_csv(output_filename, new_dataframe):
     if not os.path.exists(output_filename):
         print(f"Arquivo '{output_filename}' não encontrado. Realizando o download inicial.")
@@ -76,9 +81,10 @@ def compare_and_download_csv(output_filename, new_dataframe):
         return True
     
     try:
-        existing_df = pd.read_csv(output_filename, encoding='utf-8')
-        existing_df = existing_df.fillna('')  # Converte NaN para string vazia
-        existing_df.drop(columns=['Unnamed: 7'], inplace=True, errors='ignore')  # Remove a coluna H se existir
+        # Lê tudo como texto, inclusive o cabeçalho (header=None), e sem converter 'N/A' em NaN.
+        # Assim o arquivo é comparado exatamente como foi gravado, mesmo com colunas de
+        # cabeçalho vazias ou repetidas (ex.: colunas auxiliares da planilha).
+        existing_df = pd.read_csv(output_filename, encoding='utf-8', header=None, dtype=str, keep_default_na=False)
     except Exception as e:
         enviar_mensagem_erro(f"Erro ao ler o arquivo CSV existente '{output_filename}': {e}")
         new_dataframe.to_csv(output_filename, index=False, encoding='utf-8')
@@ -86,8 +92,8 @@ def compare_and_download_csv(output_filename, new_dataframe):
         Send_to_Github.upload_to_github(output_filename, GITHUB_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH, GITHUB_FILE_PATH)
         return True
 
-    # Compara os DataFrames
-    if existing_df.equals(new_dataframe):
+    # Compara o conteúdo (cabeçalho + linhas) como listas de texto
+    if existing_df.values.tolist() == dataframe_para_matriz(new_dataframe):
         mensagem_info = "Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado."
         print(mensagem_info)
         logging.info(mensagem_info)
