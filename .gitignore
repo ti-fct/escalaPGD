@@ -28,3 +28,4 @@ Thumbs.db
 # Sensitive information
 .env
 service_account.json
+logs.txt

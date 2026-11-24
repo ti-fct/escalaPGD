@@ -1,0 +1,1 @@
+2026-11-24 12:00:05,739 - INFO - Não há alterações entre a planilha atual e o arquivo CSV existente. Download cancelado.
