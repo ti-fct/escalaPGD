@@ -95,11 +95,41 @@ function processCSV(csvText) {
         if (row[0] && (row[0].includes("SEMANA 1") || row[0].includes("SEMANA 2"))) {
             currentWeek = row[0].includes("SEMANA 1") ? 1 : 2;
             passedHeader = false;
-            const dates = findWeekDates(result.data, i);
-            if (currentWeek === 1) {
-                week1Dates = dates;
-            } else {
-                week2Dates = dates;
+            if (row.length > 2 && row[2]) {
+                week1Dates = row.slice(2).filter(item => item && item.trim() !== "");
+            } else if (i + 1 < result.data.length) {
+                const nextRow = result.data[i + 1];
+                if (nextRow.length > 2) {
+                    week1Dates = nextRow.slice(2).filter(item => item && item.trim() !== "");
+                }
+            }
+            continue;
+        }
+        
+        // Detectar a Semana 2
+        if (row[0] && row[0].includes("SEMANA 2")) {
+            currentWeek = 2;
+            passedHeader = false;
+            let foundDates = false;
+            if (row.length > 2) {
+                const potentialDates = row.slice(2).filter(item => item && item.trim() !== "");
+                if (potentialDates.some(item => /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(item))) {
+                    week2Dates = potentialDates;
+                    foundDates = true;
+                }
+            }
+            
+            if (!foundDates) {
+                for (let j = i + 1; j < Math.min(i + 5, result.data.length); j++) {
+                    const searchRow = result.data[j];
+                    if (searchRow && searchRow.length > 2) {
+                        const potentialDates = searchRow.slice(2).filter(item => item && item.trim() !== "");
+                        if (potentialDates.some(item => /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(item))) {
+                            week2Dates = potentialDates;
+                            break;
+                        }
+                    }
+                }
             }
             continue;
         }
@@ -123,9 +153,25 @@ function processCSV(csvText) {
         
         // Processar dados das semanas
         if (currentWeek === 1 && passedHeader) {
-            week1Data.push(parseRow(row));
+            week1Data.push({
+                tecnico: row[0],
+                modalidade: row[1],
+                segunda: row[2],
+                terca: row[3],
+                quarta: row[4],
+                quinta: row[5],
+                sexta: row[6]
+            });
         } else if (currentWeek === 2 && passedHeader) {
-            week2Data.push(parseRow(row));
+            week2Data.push({
+                tecnico: row[0],
+                modalidade: row[1],
+                segunda: row[2],
+                terca: row[3],
+                quarta: row[4],
+                quinta: row[5],
+                sexta: row[6]
+            });
         }
     }
     
@@ -185,14 +231,15 @@ function fillTable(weekData, tableId) {
     weekData.forEach(row => {
         let rowHtml = `
             <tr>
-                <td>${row.tecnico || ''}</td>
-                <td>${row.salas || ''}</td>
-                <td>${row.curso || ''}</td>
+                <td>${row.tecnico}</td>
+                <td>${row.modalidade}</td>
                 ${getStatusCell(row.segunda)}
                 ${getStatusCell(row.terca)}
                 ${getStatusCell(row.quarta)}
                 ${getStatusCell(row.quinta)}
                 ${getStatusCell(row.sexta)}
+                ${getStatusCell(row.sabado)}
+                ${getStatusCell(row.domingo)}
             </tr>
         `;
         tableBody.innerHTML += rowHtml;
@@ -201,7 +248,7 @@ function fillTable(weekData, tableId) {
 
 // Função para atualizar os cabeçalhos das tabelas com as datas do CSV
 function updateTableHeaders(weekDates, weekNumber) {
-    const dias = ["segunda", "terca", "quarta", "quinta", "sexta"];
+    const dias = ["segunda", "terca", "quarta", "quinta", "sexta", "sabado", "domingo"];
     
     if (weekDates && weekDates.length >= 5) {
         const firstDate = weekDates[0];
@@ -314,7 +361,9 @@ async function highlightCurrentDate() {
             2: 1, // Terça
             3: 2, // Quarta
             4: 3, // Quinta
-            5: 4  // Sexta
+            5: 4,  // Sexta
+            6: 5, // Sabado
+            7: 6  // Domingo
         };
         
         dayIndex = dayMapping[dayOfWeek];
