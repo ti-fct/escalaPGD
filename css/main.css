@@ -86,6 +86,7 @@ body {
 
 .bg-compensacao_pactuada {
     background-color: #e6cff2 !important;
+    font-weight: bold;
     color: #5a3286 !important;
 }
 
